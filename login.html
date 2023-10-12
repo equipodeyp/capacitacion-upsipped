@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CAPACITACION UPSIPPED</title>
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <link rel="stylesheet" href="css/log.css" type="text/css" />
+  <link rel="stylesheet" href="css/log1.css" type="text/css" />
+  <script src="js/menulogin_iniciar.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+        $("#register").click(function(){
+          $("#login").css("background-color", "#ecf0f1");
+          $("#login > span").css("color", "#333");
+          $("#register").css("background-color", "#97897D");
+          $("#register > span").css("color", "white");
+          $("#l-f").toggle(500);
+          $("#r-f").toggle(1000);
+        })
+        $("#login").click(function(){
+          $("#register").css("background-color", "#ecf0f1");
+          $("#register > span").css("color", "#333");
+          $("#login").css("background-color", "#97897D");
+          $("#login > span").css("color", "white");
+          $("#l-f").toggle(1000);
+          $("#r-f").toggle(500);
+        })
+      });
+</script>
+  <style>
+header {
+	width:100%;
+	overflow:hidden;
+	/* background:hsl(0, 74%, 12%); */
+	margin-bottom:20px;
+}
+
+
+
+h5 {
+  font-size: 15px;
+  color:#f2f2f2;
+  text-align:center;
+  justify-content:center;
+  float:center;
+}
+
+  </style>
+</head>
+<body>
+  <!-- Se va a procesar en login.php y se enviará por POST, no por GET-->
+
+  <section>
+    <header>
+      <nav>
+        <section class="logo">
+          <img src="image/ESCUDOBLANCO.png" align="left" width="120" height="90">
+        </section>
+
+
+        <section>
+          <img src="image/LFGJEM.png" align="right" width="90" height="90">
+        </section>
+        <br><br><br><br><br><br><br><br><br><br>
+
+
+         <section>
+          <img src="image/capupsipped.png" style="float:center" align="center" width="1080" height="200">
+        </section>
+      </nav>
+    </header>
+  </section>
+
+  <section class="stark-login">
+    <div class="lr-wrapper" align="center">
+              <div class="lr-content">
+                <div class="lr-head">
+                  <div class="lr-l_b" id="login" onClick>
+                    <div></div>
+                    <span>Inicio</span>
+                  </div>
+                  <div class="lr-r_b" id="register">
+                    <div></div>
+                    <span>Registrar</span>
+                  </div>
+                </div>
+                <div class="lr-main">
+                  <form method="POST" id="l-f" action="login.php" >
+                    <br><br><br><br><br>
+                      <div id="fade-box">
+                        <input autocomplete="off" type="text" id="inputUsuario" name="inputUsuario" class="form-control" placeholder="Nombre de usuario" required autofocus>
+                        <input autocomplete="off" type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Ingrese su contraseña" required>
+                        <input type="submit" name="l-submit" class="l-submit" value="Login"/>
+                      </div>
+                  </form>
+                  <form method="POST" id="r-f" action="registrar.php">
+                    <input autocomplete="off" type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre (s)" required autofocus>
+                    <input autocomplete="off" type="text" id="apellido_p" name="apellido_p" class="form-control" placeholder="Apellido Paterno" required autofocus>
+                    <input autocomplete="off" type="text" id="apellido_m" name="apellido_m" class="form-control" placeholder="Apellido Materno" required autofocus>
+                    <select id="sexo" name="sexo" class="form-control" required>
+                      <option disabled selected value>Sexo</option>
+                      <option value="Hombre">Hombre</option>
+                      <option value="Mujer">Mujer</option>
+                    </select>
+                    <input autocomplete="off" type="password" id="password" name="password" class="form-control" placeholder="Ingrese su contraseña" required>
+                    <input type="submit" name="l-submit" class="r-submit" value="Registrar"/>
+                  </form>
+                </div>
+              </div>
+            </div>
+    <!--  -->
+  </section>
+  <div id="circle1">
+    <div id="inner-cirlce1">
+      <h2> </h2>
+    </div>
+  </div>
+
+  <div class="hexagons">
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <br>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <br>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <br>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <br>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+    <span>&#x2B22;</span>
+  </div>
+
+</div> 
+</body>
+</html>

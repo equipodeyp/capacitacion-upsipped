@@ -1,0 +1,340 @@
+
+.lr-wrapper {
+    max-width:100%;
+    height:500px;
+    margin-top:5%;
+}
+.lr-content {
+    height:500px;
+    width:400px;
+}
+.lr-head {
+    width:100%;
+    height:50px;
+}
+.lr-l_b {
+    width:49.8%;
+    height:50px;
+    float:left;
+    background-color:#97897D;
+    transition: background-color 0.8s ease;
+    cursor:pointer;
+}
+.lr-l_b > div {
+    height:7px;
+    width:100%;
+}
+.lr-l_b > span {
+    width:100%;
+    font-size:30px;
+    height:30px;
+    padding-top:5px;
+    color:white;
+    transition: color 0.8s ease;
+}
+.lr-r_b {
+    width:49.7%;
+    height:50px;
+    float:right;
+    transition: background-color 0.8s ease;
+    cursor:pointer;
+}
+.lr-r_b > div {
+    height:7px;
+    width:100%;
+}
+.lr-r_b > span {
+    width:100%;
+    font-size:30px;
+    height:30px;
+    padding-top:5px;
+    transition: color 0.8s ease;
+}
+#l-f {
+    transition: display 1.8s ease;
+}
+.l-username {
+    width:94%;
+    height:40px;
+    margin-top:100px;
+    padding-left:20px;
+    outline:none;
+    font-size:25px;
+    font-family:Raleway;
+    border:1px solid #b3b3b3;
+    transition:border 1.0s ease;
+}
+.l-username:focus {
+    border:1px solid #FF5252;
+}
+
+.l-password {
+    width:94%;
+    height:40px;
+    margin-top:20px;
+    padding-left:20px;
+    outline:none;
+    font-size:25px;
+    font-family:Raleway;
+    border:1px solid #b3b3b3;
+    transition:border 1.0s ease;
+}
+.l-password:focus {
+    border:1px solid #FF5252;
+}
+.l-submit {
+    width:150px;
+    height:50px;
+    margin-top:20px;
+    border:none;
+    outline:none;
+    font-size:25px;
+    font-family:Raleway;
+    background-color:#97897D;
+    color:white;
+    border-bottom:5px solid #c0392b;
+    cursor:pointer;
+}
+#r-f {
+    display:none;
+}
+.r-email {
+    width:94%;
+    height:40px;
+    margin-top:100px;
+    padding-left:20px;
+    outline:none;
+    font-size:25px;
+    font-family:Raleway;
+    border:1px solid #b3b3b3;
+    transition:border 1.0s ease;
+}
+
+.r-username {
+    width:94%;
+    height:40px;
+    margin-top:20px;
+    padding-left:20px;
+    outline:none;
+    font-size:25px;
+    font-family:Raleway;
+    border:1px solid #b3b3b3;
+     transition:border 1.0s ease;
+}
+
+.r-textarea {
+    width:88%;
+    height:40px;
+    margin-top:20px;
+    padding-left:20px;
+    outline:none;
+    font-size:25px;
+    font-family:Raleway;
+    border:1px solid #b3b3b3;
+     transition:border 1.0s ease;
+}
+
+.r-password {
+    width:94%;
+    height:40px;
+    margin-top:20px;
+    padding-left:20px;
+    outline:none;
+    font-size:25px;
+    font-family:Raleway;
+    border:1px solid #b3b3b3;
+     transition:border 1.0s ease;
+}
+.r-submit {
+    width:150px;
+    height:50px;
+    margin-top:20px;
+    border:none;
+    outline:none;
+    font-size:25px;
+    font-family:Raleway;
+    background-color:#97897D;
+    color:white;
+    border-bottom:5px solid #97897D;
+    cursor:pointer;
+}
+.r  -password:focus {
+    border:1px solid #FF5252;
+}
+.r-username:focus {
+    border:1px solid #FF5252;
+}
+.r-email:focus {
+    border:1px solid #FF5252;
+}
+
+.r-textarea:focus {
+    border:1px solid #FF5252;
+}
+
+.accent-text {
+    color: #97897D;
+    transition:color 1s;
+}
+
+/* aaaaaaaaaaaaaaaaaaaaaaaaa */
+
+
+.container {
+  margin: 80px auto;
+  width: 400px;
+  text-align: center;
+}
+
+.container > .dropdown {
+  margin: 0 20px;
+  vertical-align: top;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 38px;
+  width: 400px;
+  background: #f2f2f2;
+  border: 1px solid;
+  border-color: white #f7f7f7 whitesmoke;
+  border-radius: 3px;
+  background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
+  background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
+  background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
+  background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.06));
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+}
+
+.dropdown:before, .dropdown:after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: 9px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 4px dashed;
+  border-color: #888888 transparent;
+  pointer-events: none;
+}
+
+.dropdown:before {
+  border-bottom-style: solid;
+  border-top: none;
+}
+
+.dropdown:after {
+  margin-top: 7px;
+  border-top-style: solid;
+  border-bottom: none;
+}
+
+.dropdown-select {
+  position: relative;
+  width: 130%;
+  margin: 0;
+  padding: 6px 8px 6px 10px;
+  height: 28px;
+  line-height: 14px;
+  font-size: 12px;
+  color: #62717a;
+  text-shadow: 0 1px white;
+  background: #f2f2f2; /* Fallback for IE 8 */
+  background: rgba(0, 0, 0, 0) !important; /* "transparent" doesn't work with Opera */
+  border: 0;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+.dropdown-select:focus {
+  z-index: 3;
+  width: 100%;
+  color: #394349;
+  outline: 2px solid #49aff2;
+  outline: 2px solid -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.dropdown-select > option {
+  margin: 3px;
+  padding: 6px 8px;
+  text-shadow: none;
+  background: #f2f2f2;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Fix for IE 8 putting the arrows behind the select element. */
+
+.lt-ie9 .dropdown {
+  z-index: 1;
+}
+
+.lt-ie9 .dropdown-select {
+  z-index: -1;
+}
+
+.lt-ie9 .dropdown-select:focus {
+  z-index: 3;
+}
+
+/* Dirty fix for Firefox adding padding where it shouldn't. */
+
+@-moz-document url-prefix() {
+  .dropdown-select {
+    padding-left: 6px;
+  }
+}
+
+.dropdown-dark {
+  background: #444;
+  border-color: #111111 #0a0a0a black;
+  background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
+  background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
+  background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
+  background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.4));
+  -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
+  background: #cccccc;
+  background: linear-gradient(#333333, #222222);
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 0 #cccccc;
+  color: #cccccc;
+  display: block;
+  font-family: 'Cabin', helvetica, arial, sans-serif;
+  font-size: 13px;
+  font-size: 1.3rem;
+  height: 40px;
+  margin: 20px auto 10px;
+  padding: 0 10px;
+  text-shadow: 0 -1px 0 #cccccc;
+  width: 400px;
+}
+
+.dropdown-dark:before {
+  border-bottom-color: #aaa;
+}
+
+.dropdown-dark:after {
+  border-top-color: #aaa;
+}
+
+.dropdown-dark .dropdown-select {
+  color: #aaa;
+  text-shadow: 0 1px black;
+  background: #444;  /* Fallback for IE 8 */
+}
+
+.dropdown-dark .dropdown-select:focus {
+  color: #ccc;
+}
+
+.dropdown-dark .dropdown-select > option {
+  background: #444;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.4);
+}
