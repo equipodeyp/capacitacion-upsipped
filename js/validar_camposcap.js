@@ -1,11 +1,11 @@
 jQuery(document).ready(function(){
 
       jQuery("#NOMBRE_CAP").on('input', function (evt) {
-        jQuery(this).val(jQuery(this).val().replace(/[^A-Za-z0-9-]/g, ''));
+        jQuery(this).val(jQuery(this).val().replace(/[^A-Za-z0-9- ]/g, ''));
       });
 
       jQuery("#TEMA_CAP").on('input', function (evt) {
-        jQuery(this).val(jQuery(this).val().replace(/[^A-Za-z0-9-]/g, ''));
+        jQuery(this).val(jQuery(this).val().replace(/[^A-Za-z0-9- ]/g, ''));
 			});
 
       jQuery("#NOMBRE_PONENTE").on('input', function (evt) {
