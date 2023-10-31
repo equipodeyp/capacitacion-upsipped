@@ -323,7 +323,7 @@ a:focus {
 
 
                       <div class="col-md-6 mb-3 validar"><br />
-						            <label for="NOMBRE_PONENTE" class="is-required">NOMBRE DEL PONENTE<span class="required"></span></label>
+						            <label for="NOMBRE_PONENTE" >NOMBRE DEL PONENTE<span class="required" ></span></label>
 						            <input autocomplete="off" onkeyup="validarfrm()" class="verific form-control" id="NOMBRE_PONENTE" name="NOMBRE_PONENTE" value="" type="text">
 						          </div>
 

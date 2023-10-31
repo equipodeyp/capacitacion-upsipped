@@ -9,14 +9,14 @@ jQuery(document).ready(function(){
 			});
 
       jQuery("#NOMBRE_PONENTE").on('input', function (evt) {
-        jQuery(this).val(jQuery(this).val().replace(/[^A-Za-zÑ-ñáéíóúÁÉÍÓÚ-]/g, ''));
+        jQuery(this).val(jQuery(this).val().replace(/[^A-Za-zÑ-ñáéíóúÁÉÍÓÚ- ]/g, ''));
       });
 
       jQuery("#DUR_HORAS").on('input', function (evt) {
 			 	jQuery(this).val(jQuery(this).val().replace(/[^0-9]/g, ''));
 			 });
 
-
+r
       jQuery("#SEDE_CAP").on('input', function (evt) {
 				jQuery(this).val(jQuery(this).val().replace(/[^A-Za-zÑ-ñáéíóúÁÉÍÓÚ ]/g, ''));
 			});
@@ -25,7 +25,6 @@ jQuery(document).ready(function(){
 		});
 
 
-    // PRIMER FUNCION PARA OBTENER ESTADO-MUNICIPIO-LOCALIDAD
     $('#correo').on('keyup', function() {
   var re = /([A-Z0-9a-z_-][^@])+?@[^$#<>?]+?\.[\w]{2,4}/.test(this.value);
   if(!re) {
