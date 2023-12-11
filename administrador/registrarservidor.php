@@ -344,18 +344,18 @@ a:focus {
 
       <div class="col-md-6 mb-3 validar">
       <label for="MUN_NACIMIENTO">MUNICIPIO DE NACIMIENTO<span class="required"></span></label>
-      <input autocomplete="off" class="verific form-control" id="MUN_NACIMIENTO" name="MUN_NACIMIENTO" value="" type="text" required>
+      <input autocomplete="off" class="verific form-control" id="MUN_NACIMIENTO" name="MUN_NACIMIENTO" value="" type="text">
          </div>
 
     <div class="col-md-6 mb-3 validar">
     <label for="EST_NACIMIENTO">ESTADO DE NACIMIENTO<span class="required"></span></label>
-    <input autocomplete="off" class="verific form-control" id="EST_NACIMIENTO" name="EST_NACIMIENTO" value="" type="text" required>
+    <input autocomplete="off" class="verific form-control" id="EST_NACIMIENTO" name="EST_NACIMIENTO" value="" type="text" >
        </div>
 
 
     <div class="col-md-6 mb-3 validar">
     <label for="PAIS_NACIMIENTO">PAIS DE NACIMIENTO<span class="required"></span></label>
-    <input autocomplete="off" class="verific form-control" id="PAIS_NACIMIENTO" name="PAIS_NACIMIENTO" value="" type="text" required>
+    <input autocomplete="off" class="verific form-control" id="PAIS_NACIMIENTO" name="PAIS_NACIMIENTO" value="" type="text">
        </div>
 
 
@@ -410,23 +410,23 @@ a:focus {
 
                                         <div class="col-md-6 mb-3 validar">
                                         <label for="MUN_RESIDENCIA">MUNICIPIO DE RESIDENCIA<span class="required"></span></label>
-                                        <input autocomplete="off" class="verific form-control" id="MUN_RESIDENCIA" name="MUN_RESIDENCIA" value="" type="text" required>
+                                        <input autocomplete="off" class="verific form-control" id="MUN_RESIDENCIA" name="MUN_RESIDENCIA" value="" type="text">
                                            </div>
 
 
                                            <div class="col-md-6 mb-3 validar">
                                            <label for="EST_RESIDENCIA">ESTADO DE RESIDENCIA<span class="required"></span></label>
-                                           <input autocomplete="off" class="verific form-control" id="EST_RESIDENCIA" name="EST_RESIDENCIA" value="" type="text" required>
+                                           <input autocomplete="off" class="verific form-control" id="EST_RESIDENCIA" name="EST_RESIDENCIA" value="" type="text">
                                               </div>
 
                                               <div class="col-md-6 mb-3 validar">
                                               <label for="PAIS_RESIDENCIA">PAIS DE RESIDENCIA<span class="required"></span></label>
-                                              <input autocomplete="off" class="verific form-control" id="PAIS_RESIDENCIA" name="PAIS_RESIDENCIA" value="" type="text" required>
+                                              <input autocomplete="off" class="verific form-control" id="PAIS_RESIDENCIA" name="PAIS_RESIDENCIA" value="" type="text">
                                                  </div>
 
                                                  <div class="col-md-6 mb-3 validar">
                                                  <label for="IDIOMA_DOMINIO">IDIOMA DE DOMINIO<span class="required"></span></label>
-                                                 <input autocomplete="off" class="verific form-control" id="IDIOMA_DOMINIO" name="IDIOMA_DOMINIO" value="" type="text" required>
+                                                 <input autocomplete="off" class="verific form-control" id="IDIOMA_DOMINIO" name="IDIOMA_DOMINIO" value="" type="text">
                                                     </div>
 
 
