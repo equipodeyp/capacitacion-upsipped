@@ -36,7 +36,7 @@ $num_consecutivo =$row["id"];
   <link href="../css/bootstrap.min.css" rel="stylesheet">
   <link href="../css/bootstrap-theme.css" rel="stylesheet">
   <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/validar_camposcap.js"></script>
+  <script src="../js/validar_camposcap.js"></script>
   <link rel="stylesheet" href="../css/cli.css">
   <!--datables CSS básico-->
   <link rel="stylesheet" type="text/css" href="../datatables/datatables.min.css"/>
@@ -296,8 +296,11 @@ a:focus {
                     </select>
                   </div>
 
-
-
+                   <div class="col-md-6 mb-3 validar" id="OTROS_CAP" style="display:none;">
+                    <label for="OTROS_CAP">ESPECIFIQUE</label>
+                    <input autocomplete="off" class="form-control" id="OTROS_CAP" name="OTROS_CAP" placeholder="" value="" type="text">
+                  </div>
+                </div>
 
 						          <div class="col-md-6 mb-3 validar"><br />
 						            <label for="NOMBRE_CAP" class="is-required">NOMBRE DE LA CAPACITACIÓN<span class="required"></span></label>
@@ -326,6 +329,13 @@ a:focus {
 						            <label for="NOMBRE_PONENTE" >NOMBRE DEL PONENTE<span class="required" ></span></label>
 						            <input autocomplete="off" onkeyup="validarfrm()" class="verific form-control" id="NOMBRE_PONENTE" name="NOMBRE_PONENTE" value="" type="text">
 						          </div>
+
+
+                      <div class="col-md-6 mb-3 validar"><br />
+                        <label for="INSTITUCION" >INSTITUCIÓN QUE IMPARTE<span class="required" ></span></label>
+                        <input autocomplete="off" onkeyup="validarfrm()" class="verific form-control" id="INSTITUCION" name="INSTITUCION" value="" type="text">
+                      </div>
+
 
                       <div class="col-md-6 mb-3 validar"><br />
                         <label for="DUR_HORAS" class="is-required">DURACION TOTAL DE HORAS<span class="required"></span></label>
@@ -362,16 +372,10 @@ a:focus {
                   </select>
                 </div>
 
-
-
-
                   <div class="col-md-6 mb-3 validar"><br />
                     <label for="SEDE_CAP" class="is-required">SEDE<span class="required"></span></label>
                     <input autocomplete="off" onkeyup="validarfrm()" class="verific form-control" id="SEDE_CAP" name="SEDE_CAP" value="" type="text">
                   </div>
-
-
-
 
 
 
@@ -387,4 +391,18 @@ a:focus {
   </div>
   <a href="../logout.php" class="btn-flotante-dos">Cerrar Sesión</a>
   <a href="admin.php" class="btn-flotante">Regresar</a>
+  <script type="text/javascript">
+  var tipconv = document.getElementById('TIPO_CAP');
+  var camtipconv = '';
+  tipconv.addEventListener('change', obtcamtipconv);
+    function obtcamtipconv(e){
+      camtipconv = e.target.value;
+      console.log(camtipconv);
+      if (camtipconv === 'OTROS') {
+        document.getElementById('OTROS_CAP').style.display = "";
+      }else {
+        document.getElementById('OTROS_CAP').style.display = "none";
+      }
+    }
+  </script>
 </body>

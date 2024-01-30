@@ -1,7 +1,7 @@
 jQuery(document).ready(function(){
 
       jQuery("#NOMBRE_CAP").on('input', function (evt) {
-        jQuery(this).val(jQuery(this).val().replace(/[^A-Za-z0-9- ]/g, ''));
+        jQuery(this).val(jQuery(this).val().replace(/[^A-Za-zÑ-ñáéíóúÁÉÍÓÚ ]/g, ''));
       });
 
       jQuery("#TEMA_CAP").on('input', function (evt) {
@@ -9,14 +9,19 @@ jQuery(document).ready(function(){
 			});
 
       jQuery("#NOMBRE_PONENTE").on('input', function (evt) {
-        jQuery(this).val(jQuery(this).val().replace(/[^A-Za-zÑ-ñáéíóúÁÉÍÓÚ- ]/g, ''));
+        jQuery(this).val(jQuery(this).val().replace(/[^A-Za-zÑ-ñáéíóúÁÉÍÓÚ-]/g, ''));
       });
 
       jQuery("#DUR_HORAS").on('input', function (evt) {
 			 	jQuery(this).val(jQuery(this).val().replace(/[^0-9]/g, ''));
 			 });
 
-r
+
+       jQuery("#INSTITUCION").on('input', function (evt) {
+ 			 	  jQuery(this).val(jQuery(this).val().replace(/[^A-Za-zÑ-ñáéíóúÁÉÍÓÚ-]/g, ''));
+ 			 });
+
+
       jQuery("#SEDE_CAP").on('input', function (evt) {
 				jQuery(this).val(jQuery(this).val().replace(/[^A-Za-zÑ-ñáéíóúÁÉÍÓÚ ]/g, ''));
 			});
