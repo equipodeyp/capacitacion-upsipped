@@ -9,7 +9,7 @@ jQuery(document).ready(function(){
 			});
 
       jQuery("#NOMBRE_PONENTE").on('input', function (evt) {
-        jQuery(this).val(jQuery(this).val().replace(/[^A-Za-zÑ-ñáéíóúÁÉÍÓÚ-]/g, ''));
+        jQuery(this).val(jQuery(this).val().replace(/[^A-Za-zÑ-ñáéíóúÁÉÍÓÚ ]/g, ''));
       });
 
       jQuery("#DUR_HORAS").on('input', function (evt) {
@@ -18,7 +18,7 @@ jQuery(document).ready(function(){
 
 
        jQuery("#INSTITUCION").on('input', function (evt) {
- 			 	  jQuery(this).val(jQuery(this).val().replace(/[^A-Za-zÑ-ñáéíóúÁÉÍÓÚ-]/g, ''));
+ 			 	  jQuery(this).val(jQuery(this).val().replace(/[^A-Za-zÑ-ñáéíóúÁÉÍÓÚ ]/g, ''));
  			 });
 
 
