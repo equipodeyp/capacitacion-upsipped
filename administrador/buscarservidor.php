@@ -60,35 +60,34 @@ $num_consecutivo =$row["id"];
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 <!-- SCRIPT PARA EL MANEJO DE LA TABLA -->
-  <script type="text/javascript">
-  $(document).ready(function() {
-      $('#example').DataTable({
-          language: {
-                  "lengthMenu": "Mostrar MENU registros",
-                  "zeroRecords": "No se encontraron resultados",
-                  "info": "Mostrando registros del START al END de un total de TOTAL registros",
-                  "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                  "infoFiltered": "(filtrado de un total de MAX registros)",
-                  "sSearch": "Buscar:",
-                  "oPaginate": {
-                      "sFirst": "Primero",
-                      "sLast":"Último",
-                      "sNext":"Siguiente",
-                      "sPrevious": "Anterior"
-             },
-             "sProcessing":"Procesando...",
-              },
-      });
-  });
-  </script>
-
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#example').DataTable({
+        language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+           },
+           "sProcessing":"Procesando...",
+            },
+    });
+});
+</script>
 
 </head>
 <body>
   <div class="contenedor">
     <div class="sidebar ancho">
       <div class="logo text-warning">
-        
+
       </div>
       <div style="text-align:center" class="user">
         <?php
@@ -108,7 +107,7 @@ $num_consecutivo =$row["id"];
         <h6 style="text-align:center" class='user-nombre'>  <?php echo "" . $_SESSION['usuario']; ?> </h6>
       </div>
     </div>
-      
+
 
     <div class="main bg-light">
       <div class="barra">
@@ -134,7 +133,7 @@ $num_consecutivo =$row["id"];
                                             <tr>
                                                 <th style="text-align:center">No.</th>
                                                 <th style="text-align:center">NOMBRE DEL SERVIDOR</th>
-                                                <th style="text-align:center">ACCIONES</th>                                               
+                                                <th style="text-align:center">ACCIONES</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -144,7 +143,7 @@ $num_consecutivo =$row["id"];
                                           $var_resultado = $mysqli->query($tabla);
 
                                           while ($var_fila=$var_resultado->fetch_array())
-                                          {                                            
+                                          {
                                                 $contador = $contador + 1;
                                                 echo "<tr>";
                                                 echo "<td style='text-align:center'>"; echo $contador; echo "</td>";
@@ -153,7 +152,7 @@ $num_consecutivo =$row["id"];
                                                 echo "<a href='#edit_".$var_fila['id']."' class='btn color-btn-success btn-sm' data-toggle='modal'><i class='fa-solid fa-file-pen'></i> MODIFICAR</a>"; echo "     ";
                                                 echo "<a href='' class='btn color-btn-success btn-sm' data-toggle='modal'><i class='fa-solid fa-file-pen'></i> ELIMINAR</a>";
                                                 include('verservidor.php');
-                                                echo "</td>";                                         
+                                                echo "</td>";
                                                 echo "</tr>";
                                           }
 
@@ -163,7 +162,7 @@ $num_consecutivo =$row["id"];
                                        </table>
                                     </div>
         </div>
-    </div>      
+    </div>
  </div>
 
   <a href="../logout.php" class="btn-flotante-dos">Cerrar Sesión</a>
