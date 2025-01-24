@@ -49,7 +49,7 @@ if ($verificar_no_recarga === 1) {
   $res_addservidor = $mysqli->query($addservidor);
 
   if($res_addservidor){
-     ("<script type='text/javaScript'>
+    echo ("<script type='text/javaScript'>
      window.location.href='../administrador/buscarservidor.php';
      window.alert('!!!!!Registro exitoso¡¡¡¡¡')
    </script>");

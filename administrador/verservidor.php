@@ -17,7 +17,7 @@
                 //    echo$rowfol['fecha_nacimiento'];
                    $fechanac = $rowfol['fecha_nacimiento'];
                     ?>
-                <form action="actualizar_servidor.php?id=<?php echo $idservidor; ?>" method="post">
+                <form action="actualizar_servidor.php?id=<?php echo $idservidor;?>" method="post">
                     <div class="col-md-6 mb-3 validar">
                         <label for="NUMERO_GAFETE" class="is-required">NUMERO DE GAFETE<span class="required"></span></label>
                         <input autocomplete="off" class="verific form-control" id="NUMERO_GAFETE" name="NUMERO_GAFETE" value="<?php echo $rowfol['num_gafete']; ?>" type="text" required>

@@ -150,8 +150,9 @@ $(document).ready(function() {
                                                 echo "<td style='text-align:center'>"; echo $var_fila['nombre'].' '.$var_fila['a_paterno'].' '.$var_fila['a_materno']; echo "</td>";
                                                 echo "<td style='text-align:center'>";
                                                 echo "<a href='#edit_".$var_fila['id']."' class='btn color-btn-success btn-sm' data-toggle='modal'><i class='fa-solid fa-file-pen'></i> MODIFICAR</a>"; echo "     ";
-                                                echo "<a href='' class='btn color-btn-success btn-sm' data-toggle='modal'><i class='fa-solid fa-file-pen'></i> ELIMINAR</a>";
-                                                include('verservidor.php');
+                                                echo "<a href='#eliminar_".$var_fila['id']."' class='btn color-btn-success btn-sm' data-toggle='modal'><i class='fa-solid fa-file-pen'></i> ELIMINAR</a>";
+                                                include('verservidor.php'); 
+                                                include('eliminar_servidor.php');
                                                 echo "</td>";
                                                 echo "</tr>";
                                           }
