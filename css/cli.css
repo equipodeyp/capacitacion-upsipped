@@ -10,7 +10,7 @@
   flex-grow: 1;
   padding: 15px 15px;
   .barra {
-    height: 50px;
+    height: 210px;
 
   }
 }
@@ -174,6 +174,36 @@ right: 1600px;
 }
 }
 
+
+.btn-flotante-regresar {
+  font-size: 14px; /* Cambiar el tamaño de la tipografia */
+  text-transform: uppercase; /* Texto en mayusculas */
+  font-weight: bold; /* Fuente en negrita o bold */
+  color: #FFFFFF; /* Color del texto */
+  border-radius: 5px; /* Borde del boton */
+  letter-spacing: 2px; /* Espacio entre letras */
+  background-color: #A19E9F; /* Color de fondo */
+  padding: 10px 15px; /* Relleno del boton */
+  position: fixed;
+  bottom: 20px;
+  right: 1520px;
+  transition: all 300ms ease 0ms;
+  box-shadow: 0px 8px 15px #97897D;
+  z-index: 99;
+  }
+  .btn-flotante-regresar:hover {
+  background-color:  #A19E9F; /* Color de fondo al pasar el cursor */
+  box-shadow: 0px 15px 20px #97897D;
+  transform: translateY(-7px);
+  }
+  @media only screen and (max-width: 600px) {
+  .btn-flotante-regresar {
+  font-size: 14px;
+  padding: 10px 15px;
+  bottom: 20px;
+  right: 1520px;
+  }
+  }
 
 
 
@@ -344,3 +374,143 @@ right: 20px;
   right: 40px;
   }
   }
+
+
+
+
+
+/* 
+  .btn-flotante-instrumento {
+    font-size: 14px; /
+    text-transform: uppercase; 
+    font-weight: bold; 
+    color: #FFFFFF; 
+    border-radius: 5px; 
+    letter-spacing: 2px; 
+    background-color: #A19E9F; 
+    padding: 10px 15px; 
+    position: fixed;
+    top: 350px;
+    left: 150px;
+    transition: all 300ms ease 0ms;
+    box-shadow: 0px 8px 15px #97897D;
+    z-index: 99;
+    }
+    .btn-flotante-instrumento:hover {
+    background-color:  #A19E9F; 
+    box-shadow: 0px 15px 20px #97897D;
+    transform: translateY(-7px);
+    }
+    @media only screen and (max-width: 600px) {
+    .btn-flotante-instrumento {
+    font-size: 14px;
+    padding: 10px 15px;
+    top: 350px;
+    left: 150px;
+    }
+    }
+
+    .btn-flotante-instrumento-resultado {
+      font-size: 14px; 
+      text-transform: uppercase; 
+      font-weight: bold; 
+      color: #FFFFFF; 
+      border-radius: 5px; 
+      letter-spacing: 2px;
+      background-color: #A19E9F; 
+      padding: 10px 15px; 
+      position: fixed;
+      top: 400px;
+      left: 150px;
+      transition: all 300ms ease 0ms;
+      box-shadow: 0px 8px 15px #97897D;
+      z-index: 99;
+      }
+      .btn-flotante-instrumento-resultado:hover {
+      background-color:  #A19E9F; 
+      box-shadow: 0px 15px 20px #97897D;
+      transform: translateY(-7px);
+      }
+      @media only screen and (max-width: 600px) {
+      .btn-flotante-instrumento-resultado {
+      font-size: 14px;
+      padding: 10px 15px;
+      top: 400px;
+      left: 150px;
+      }
+      }
+
+      */
+
+    .resultado-instrumento-uno {      
+      width: 295px;
+      height: 100px;
+      background: #97897D !important;
+      color:#323131 !important;
+      word-wrap: break-word;
+      border: 3px solid #5F6D6B !important;
+      text-align:center; 
+      font-size: 20px;
+      position: fixed;
+      top: 440px;
+      left: 150px; 
+
+    }
+    .resultado-instrumento-dos {      
+      width: 295px;
+      height: 35px;
+      word-wrap: break-word;
+      border: 3px solid #97897D; 
+      text-align:center; 
+      font-size: 18px;
+      position: fixed;
+      top: 550px;
+      left: 150px; 
+
+  }
+
+  .resultado-instrumento-tres {      
+    width: 295px;
+    height: 35px;
+    word-wrap: break-word;
+    border: 3px solid #97897D; 
+    text-align:center; 
+    font-size: 18px;
+    position: fixed;
+    top: 590px;
+    left: 150px; 
+
+}
+
+
+.btn-flotante-imprimir-asistencia {
+  font-size: 14px; /* Cambiar el tamaño de la tipografia */
+  text-transform: uppercase; /* Texto en mayusculas */
+  font-weight: bold; /* Fuente en negrita o bold */
+  /* color: #FFFFFF; */
+  border-radius: 5px; /* Borde del boton */
+  letter-spacing: 2px; /* Espacio entre letras */
+  /* background-color: #5F6D6B; */
+  padding: 10px 15px; /* Relleno del boton */
+  position: fixed;
+  bottom: 620px;
+  right: 150px;
+  transition: all 300ms ease 0ms;
+  box-shadow: 0px 8px 15px #878686;
+  z-index: 99;
+  }
+  .btn-flotante-imprimir-asistencia:hover {
+  /* background-color:  #5F6D6B; */
+  box-shadow: 0px 15px 20px #878686;
+  transform: translateY(-7px);
+  }
+  @media only screen and (max-width: 600px) {
+  .btn-flotante-imprimir-asistencia {
+  font-size: 14px;
+  padding: 10px 15px;
+  bottom: 620px;
+  right: 150px;
+  }
+  }
+
+

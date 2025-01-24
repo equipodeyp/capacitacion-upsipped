@@ -217,12 +217,17 @@ a:focus {
         ?>
         <h6 style="text-align:center" class='user-nombre'>  <?php echo "" . $_SESSION['usuario']; ?> </h6>
       </div>
-
+      <nav class="menu-nav">
+        <ul>
+            <li class="menu-items"><a  href="#" onclick="location.href='buscarservidor.php'"><i class="color-icon fa-solid fa-comment-dots menu-nav--icon fa-fw"></i><span style="color: white; font-weight:bold;">CONSULTAR SERVIDOR</span></a></li>
+            </ul>
+      </nav>
 
     </div>
     <div class="main bg-light">
       <div class="barra">
-
+          <img src="../image/fiscalia.png" alt="" width="150" height="150">
+          <img src="../image/capupsipped.png" alt="" width="1080" height="170">
       </div>
         <br><br><br><br><br><br><br>
         <div class="row">

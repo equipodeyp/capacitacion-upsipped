@@ -1,0 +1,65 @@
+header{
+    background: #8E2DE2;
+    background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);
+    background: linear-gradient(to right, #4A00E0, #8E2DE2);
+}
+
+/*estilos para la tabla*/
+table th {
+    background-color: #5F6D6B !important;
+    color: white;
+}
+table>tbody>tr>td {
+    vertical-align: middle !important;
+}
+
+/*para alinear los botones y cuadro de busqueda*/
+.btn-group, .btn-group-vertical {
+    position: absolute !important;
+}
+.color-icon{
+    background-color: #FFFFFF !important;
+    color: #97897D !important;
+}
+
+.color-btn-export-eye{
+    background-color: #f8fdfc !important;
+    color: #63696D !important;
+}
+.color-btn-export-xls{
+    background-color: #63696D !important;
+    color: #f8fdfc !important;
+}
+.color-btn-export-ppt{
+    background-color: #97897D !important;
+    color: #f8fdfc !important;
+}
+.color-btn-export-imp{
+    background-color: #A19E9F !important;
+    color: #f8fdfc !important;
+}
+
+.color-btn-success{
+    background-color: #97897D !important;
+    color: #f8fdfc !important;
+}
+.div-title{
+    background-color: #5F6D6B !important;
+    color: #f8fdfc !important;
+}
+
+.color-btn-success-white{
+    background-color: #FFFFFF !important;
+    color: #5F6D6B !important;
+}
+
+.color-btn-success-gray{
+    background-color: #63696D !important;
+    color: #FFFFFF !important;
+}
+
+.color-btn-repo-ver{
+    background-color: #A19E9F !important;
+    color: #f8fdfc !important;
+}
+>>>>>>> 290044a1ee147069d34a508518dac2ddbff8b2c6

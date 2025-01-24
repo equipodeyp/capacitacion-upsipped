@@ -1,0 +1,34 @@
+.vertical_center_button {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 15px;
+  }
+
+
+.button_iniciar {
+    border-radius: 15px;
+    display: inline-block;
+    padding: 1em 2em;
+    color: white;
+    border-radius: 1em;
+    border:none;
+    outline: 2px solid rgb(199, 198, 198);
+    outline-offset: 3px;
+}
+
+.button_hover:hover {
+  background-color: #b9ad05;
+  color: rgb(10, 10, 10);
+}
+
+.button_back:hover {
+  background-color: #b9ad05;
+  color: rgb(10, 10, 10);
+}
+
+.button_next:hover {
+  background-color: #b9ad05;
+  color: rgb(10, 10, 10);
+}
