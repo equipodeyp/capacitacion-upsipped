@@ -126,7 +126,7 @@ $(document).ready(function() {
          <H1 style="text-align:center">
                          BUSQUEDA DEL SERVIDOR PUBLICO
          </H1>
-         <div class="table-responsive">
+         <div class="container" >
                                         <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                           <h3 style="text-align:center">Registros</h3>
