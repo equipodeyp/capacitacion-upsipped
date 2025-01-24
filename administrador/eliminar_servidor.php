@@ -18,7 +18,7 @@
                         //    echo$rowfol['fecha_nacimiento'];
                         $fechanac = $rowfol['fecha_nacimiento'];
                         ?>
-                      <form action="actualizar_servidor.php?id=<?php echo $idservidor;?>" method="post" 
+                      <form action="delete_servidor.php?id=<?php echo $idservidor;?>" method="post" 
                       <center><h1 class="modal-title" id="myModalLabel">ESTA SEGURO DE ELIMINAR AL SERVIDOR</h1></center>
                       <div class="modal-footer">
                       <div style="text-align: center;">
