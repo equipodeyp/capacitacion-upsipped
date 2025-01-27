@@ -68,7 +68,7 @@
                     </div>
                     <div class="col-md-4 mb-3 validar">
                         <label for="FECHA_NACIMIENTO" class="is-required">FECHA DE NACIMIENTO<span class="required"></span></label>
-                        <input autocomplete="off" class="verific form-control" id="FECHA_NACIMIENTO" name="FECHA_NACIMIENTO" value="<?php echo date('d/m/Y', strtotime($fechanac)); ?>" type="text" required>
+                        <input autocomplete="off" class="verific form-control" id="FECHA_NACIMIENTO" name="FECHA_NACIMIENTO" value="<?php echo $rowfol['fecha_nacimiento']; ?>" type="date" required>
                     </div>
                     <div class="col-md-4 mb-3 validar">
                         <label for="MUNICIPIO_DE_NACIMIENTO" class="is-required">MUNICIPIO DE NACIMIENTO<span class="required"></span></label>

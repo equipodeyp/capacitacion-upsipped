@@ -112,7 +112,7 @@ $row=$result->fetch_assoc();
       <div class="">
         <div class="row">
           <div class="col-lg-12">
-            <div class="table-responsive">
+            <div class="table-responsive container">
               <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                   <h3 style="text-align:center">Registros</h3>
