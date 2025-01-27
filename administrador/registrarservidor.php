@@ -44,6 +44,7 @@ $num_consecutivo =$row["id"];
   <script src="../datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
   <script src="../datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
   <script src="../datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+  <script src="../js/validar_servidorcampos.js"></script>
 <!-- SCRIPT PARA EL MANEJO DE LA TABLA -->
   <script type="text/javascript">
   $(document).ready(function() {
@@ -270,49 +271,49 @@ a:focus {
 
                       <div class="col-md-6 mb-3 validar">
                         <label for="NUMERO_GAFETE" class="is-required">NUMERO DE GAFETE<span class="required"></span></label>
-                        <input autocomplete="off" class="verific form-control" id="NUMERO_GAFETE" name="NUMERO_GAFETE" value="" type="text" required>
+                        <input autocomplete="off"  class="num-gafete verific form-control" id="NUMERO_GAFETE" name="NUMERO_GAFETE" value="" type="text" required>
                       </div>
 
                       <div class="col-md-6 mb-3 validar">
                         <label for="CLAVE_SERVIDOR" class="is-required">CLAVE DEL SERVIDOR<span class="required"></span></label>
-                        <input autocomplete="off" class="verific form-control" id="CLAVE_SERVIDOR" name="CLAVE_SERVIDOR" value="" type="text" maxlength="9" required>
+                        <input autocomplete="off" class="clave-servidor verific form-control" id="CLAVE_SERVIDOR" name="CLAVE_SERVIDOR" value="" type="text" required>
                       </div>
 
 						          <div class="col-md-6 mb-3 validar">
 						            <label for="RFC_SERVIDOR" class="is-required">RFC<span class="required"></span></label>
-						            <input autocomplete="off" class="verific form-control" id="RFC_SERVIDOR" name="RFC_SERVIDOR" value="" type="text" required>
+						            <input autocomplete="off" class="rfc-servidor verific form-control" id="RFC_SERVIDOR" name="RFC_SERVIDOR" value="" type="text" required>
 						          </div>
 
                       <div class="col-md-6 mb-3 validar">
                         <label for="CURP_SERVIDOR" class="is-required">CURP<span class="required"></span></label>
-                        <input autocomplete="off" class="verific form-control" id="CURP_SERVIDOR" name="CURP_SERVIDOR" value="" type="text" required>
+                        <input autocomplete="off" class="curp-servidor verific form-control" id="CURP_SERVIDOR" name="CURP_SERVIDOR" value="" type="text" required>
                       </div>
 
 
                       <div class="col-md-6 mb-3 validar">
                         <label for="CUIP_SERVIDOR" class="is-required">CUIP<span class="required"></span></label>
-                        <input autocomplete="off" class="verific form-control" id="CUIP_SERVIDOR" name="CUIP_SERVIDOR" value="" type="text" required>
+                        <input autocomplete="off" class="cuip-servidor verific form-control" id="CUIP_SERVIDOR" name="CUIP_SERVIDOR" value="" type="text" required>
                       </div>
 
                       <div class="col-md-6 mb-3 validar">
 						            <label for="PATERNO_SERVIDOR" class="is-required">APELLIDO PATERNO DEL SERVIDOR PÚBLICO<span class="required"></span></label>
-						            <input autocomplete="off" class="verific form-control" id="PATERNO_SERVIDOR" name="PATERNO_SERVIDOR" value="" type="text" required>
+						            <input autocomplete="off" class="apaterno-servidor verific form-control" id="PATERNO_SERVIDOR" name="PATERNO_SERVIDOR" value="" type="text" required>
 						          </div>
 
                       <div class="col-md-6 mb-3 validar">
                         <label for="MATERNO_SERVIDOR" class="is-required">APELLIDO MATERNO DEL SERVIDOR PÚBLICO<span class="required"></span></label>
-                        <input autocomplete="off" class="verific form-control" id="MATERNO_SERVIDOR" name="MATERNO_SERVIDOR" value="" type="text" required>
+                        <input autocomplete="off" class="amaterno-servidor verific form-control" id="MATERNO_SERVIDOR" name="MATERNO_SERVIDOR" value="" type="text" required>
                       </div>
 
                       	 <div class="col-md-6 mb-3 validar">
                       		 <label for="NOMBRE_SERVIDOR" class="is-required">NOMBRE DEL SERVIDOR PÚBLICO<span class="required"></span></label>
-                      		  <input autocomplete="off" class="verific form-control" id="NOMBRE_SERVIDOR" name="NOMBRE_SERVIDOR" value="" type="text" required>
+                      		  <input autocomplete="off" class="nombre-servidor verific form-control" id="NOMBRE_SERVIDOR" name="NOMBRE_SERVIDOR" value="" type="text" required>
                       		    </div>
 
 
 						          <div class="col-md-6 mb-3 validar">
                       	<label for="CARGO_SERVIDOR" class="is-required">CARGO DEL SERVIDOR PÚBLICO<span class="required"></span></label>
-                      	  <input autocomplete="off" class="verific form-control" id="CARGO_SERVIDOR" name="CARGO_SERVIDOR" value="" type="text" required>
+                      	  <input autocomplete="off" class="cargo-servidor verific form-control" id="CARGO_SERVIDOR" name="CARGO_SERVIDOR" value="" type="text" required>
                       	     </div>
 
 
@@ -334,12 +335,12 @@ a:focus {
 
                             <div class="col-md-6 mb-3 validar">
                              <label for="ADSCRIPCION_SERVIDOR" class="is-required">ADSCRIPCION<span class="required"></span></label>
-                               <input autocomplete="off" class="verific form-control" id="ADSCRIPCION_SERVIDOR" name="ADSCRIPCION_SERVIDOR" value="" type="text" required>
+                               <input autocomplete="off" class="adscripcion-servidor verific form-control" id="ADSCRIPCION_SERVIDOR" name="ADSCRIPCION_SERVIDOR" value="" type="text" required>
                                   </div>
 
                                   <div class="col-md-6 mb-3 validar">
                                    <label for="UNIDAD_ADMON" class="is-required">UNIDAD ADMINISTRATIVA<span class="required"></span></label>
-                                     <input autocomplete="off" class="verific form-control" id="UNIDAD_ADMON" name="UNIDAD_ADMON" value="" type="text" required>
+                                     <input autocomplete="off" class="unidadadmin-servidor verific form-control" id="UNIDAD_ADMON" name="UNIDAD_ADMON" value="" type="text" required>
                                         </div>
 
                                         <div class="col-md-6 mb-3 validar">
@@ -349,18 +350,18 @@ a:focus {
 
       <div class="col-md-6 mb-3 validar">
       <label for="MUN_NACIMIENTO">MUNICIPIO DE NACIMIENTO<span class="required"></span></label>
-      <input autocomplete="off" class="verific form-control" id="MUN_NACIMIENTO" name="MUN_NACIMIENTO" value="" type="text">
+      <input autocomplete="off" class="munnac-servidor verific form-control" id="MUN_NACIMIENTO" name="MUN_NACIMIENTO" value="" type="text">
          </div>
 
     <div class="col-md-6 mb-3 validar">
     <label for="EST_NACIMIENTO">ESTADO DE NACIMIENTO<span class="required"></span></label>
-    <input autocomplete="off" class="verific form-control" id="EST_NACIMIENTO" name="EST_NACIMIENTO" value="" type="text" >
+    <input autocomplete="off" class="estnac-servidor verific form-control" id="EST_NACIMIENTO" name="EST_NACIMIENTO" value="" type="text" >
        </div>
 
 
     <div class="col-md-6 mb-3 validar">
     <label for="PAIS_NACIMIENTO">PAIS DE NACIMIENTO<span class="required"></span></label>
-    <input autocomplete="off" class="verific form-control" id="PAIS_NACIMIENTO" name="PAIS_NACIMIENTO" value="" type="text">
+    <input autocomplete="off" class="paisnac-servidor verific form-control" id="PAIS_NACIMIENTO" name="PAIS_NACIMIENTO" value="" type="text">
        </div>
 
 
@@ -383,55 +384,55 @@ a:focus {
 
     <div class="col-md-6 mb-3 validar">
      <label for="CORREO_PERSONAL" class="is-required">CORREO PERSONAL<span class="required"></span></label>
-       <input autocomplete="off" class="verific form-control" id="CORREO_PERSONAL" name="CORREO_PERSONAL" value="" type="email" required >
+       <input autocomplete="off" class="correopers-servidor verific form-control" id="CORREO_PERSONAL" name="CORREO_PERSONAL" value="" type="email" required >
           </div>
 
           <div class="col-md-6 mb-3 validar">
            <label for="CORREO_INSTI" class="is-required">CORREO INSTITUCIONAL<span class="required"></span></label>
-             <input autocomplete="off" class="verific form-control" id="CORREO_INSTI" name="CORREO_INSTI" value="" type="email" required>
+             <input autocomplete="off" class="correoinst-servidor verific form-control" id="CORREO_INSTI" name="CORREO_INSTI" value="" type="email" required>
                 </div>
 
                 <div class="col-md-6 mb-3 validar">
                  <label for="CORREO_GMAIL" class="is-required">CORREO GMAIL<span class="required"></span></label>
-                   <input autocomplete="off" class="verific form-control" id="CORREO_GMAIL" name="CORREO_GMAIL" value="" type="email" required>
+                   <input autocomplete="off" class="correogmail-servidor verific form-control" id="CORREO_GMAIL" name="CORREO_GMAIL" value="" type="email" required>
                       </div>
 
                       <div class="col-md-6 mb-3 validar">
                        <label for="TELEFONO_FIJO" class="is-required">TELEFONO DE CASA<span class="required"></span></label>
-                         <input autocomplete="off" class="verific form-control" id="TELEFONO_FIJO" name="TELEFONO_FIJO" value="" type="text" required>
+                         <input autocomplete="off" class="verific form-control" id="TELEFONO_FIJO" name="TELEFONO_FIJO" value="" type="text" pattern="[0-9]{1,10}" maxlength="10" required>
                             </div>
 
                             <div class="col-md-6 mb-3 validar">
                              <label for="TELEFONO_CELULAR" class="is-required">TELEFONO CELULAR<span class="required"></span></label>
-                               <input autocomplete="off" class="verific form-control" id="TELEFONO_CELULAR" name="TELEFONO_CELULAR" value="" type="text" required>
+                               <input autocomplete="off" class="verific form-control" id="TELEFONO_CELULAR" name="TELEFONO_CELULAR" value="" type="text" pattern="[0-9]{1,10}" maxlength="10" required>
                                   </div>
 
                                   <div class="col-md-6 mb-3 validar">
                                    <label for="TELEFONO_TRABAJO" class="is-required">TELEFONO DE TRABAJO<span class="required"></span></label>
-                                     <input autocomplete="off" class="verific form-control" id="TELEFONO_TRABAJO" name="TELEFONO_TRABAJO" value="" type="text" required>
+                                     <input autocomplete="off" class="verific form-control" id="TELEFONO_TRABAJO" name="TELEFONO_TRABAJO" value="" type="text" pattern="[0-9]{1,10}" maxlength="10" required>
                                         </div>
 
 
 
                                         <div class="col-md-6 mb-3 validar">
                                         <label for="MUN_RESIDENCIA">MUNICIPIO DE RESIDENCIA<span class="required"></span></label>
-                                        <input autocomplete="off" class="verific form-control" id="MUN_RESIDENCIA" name="MUN_RESIDENCIA" value="" type="text">
+                                        <input autocomplete="off" class="municresidencia-servidor verific form-control" id="MUN_RESIDENCIA" name="MUN_RESIDENCIA" value="" type="text">
                                            </div>
 
 
                                            <div class="col-md-6 mb-3 validar">
                                            <label for="EST_RESIDENCIA">ESTADO DE RESIDENCIA<span class="required"></span></label>
-                                           <input autocomplete="off" class="verific form-control" id="EST_RESIDENCIA" name="EST_RESIDENCIA" value="" type="text">
+                                           <input autocomplete="off" class="estresidencia-servidor verific form-control" id="EST_RESIDENCIA" name="EST_RESIDENCIA" value="" type="text">
                                               </div>
 
                                               <div class="col-md-6 mb-3 validar">
                                               <label for="PAIS_RESIDENCIA">PAIS DE RESIDENCIA<span class="required"></span></label>
-                                              <input autocomplete="off" class="verific form-control" id="PAIS_RESIDENCIA" name="PAIS_RESIDENCIA" value="" type="text">
+                                              <input autocomplete="off" class="paisresidencia-servidor verific form-control" id="PAIS_RESIDENCIA" name="PAIS_RESIDENCIA" value="" type="text">
                                                  </div>
 
                                                  <div class="col-md-6 mb-3 validar">
                                                  <label for="IDIOMA_DOMINIO">IDIOMA DE DOMINIO<span class="required"></span></label>
-                                                 <input autocomplete="off" class="verific form-control" id="IDIOMA_DOMINIO" name="IDIOMA_DOMINIO" value="" type="text">
+                                                 <input autocomplete="off" class="idiomadominio-servidor verific form-control" id="IDIOMA_DOMINIO" name="IDIOMA_DOMINIO" value="" type="text">
                                                     </div>
 
 
@@ -487,4 +488,70 @@ a:focus {
   </div>
   <a href="../logout.php" class="btn-flotante-dos">Cerrar Sesión</a>
   <a href="admin.php" class="btn-flotante">Regresar</a>
+  <script>
+    $('.num-gafete').on('input', function () { 
+    this.value = this.value.replace(/[^A-Za-z-0-9- .]/g,'');
+  });
+    $('.clave-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^ 0-9]/g,'');
+  });
+    $('.rfc-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^A-Za-z 0-9]/g,'');
+  });
+  $('.curp-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^A-Za-z 0-9]/g,'');
+  });
+  $('.cuip-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^A-Za-z 0-9]/g,'');
+  });
+  $('.apaterno-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^A-Za-z]/g,'');
+  });
+  $('.amaterno-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^A-Za-z]/g,'');
+  });
+  $('.nombre-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^A-Za-z ]/g,'');
+  });
+  $('.cargo-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^A-Za-z]/g,'');
+  });
+  $('.adscripcion-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^A-Za-z -]/g,'');
+  });
+  $('.unidadadmin-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^A-Za-z]/g,'');
+  });
+  $('.munnac-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^A-Za-z]/g,'');
+  });
+  $('.estnac-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^A-Za-z]/g,'');
+  });
+  $('.paisnac-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^A-Za-z]/g,'');
+  });
+  $('.correopers-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^a-zA-Z0-9.@_-]/g,'');
+  });
+  $('.correoinst-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^a-zA-Z0-9.@_-]/g,'');
+  });
+  $('.correogmail-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^a-zA-Z0-9.@_-]/g,'');
+  });
+  $('.municresidencia-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^A-Za-z]/g,'');
+  });
+  $('.estresidencia-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^A-Za-z]/g,'');
+  });
+  $('.paisresidencia-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^A-Za-z]/g,'');
+  });
+  $('.idiomadominio-servidor').on('input', function () { 
+    this.value = this.value.replace(/[^A-Za-z]/g,'');
+  });
+
+  </script>
 </body>

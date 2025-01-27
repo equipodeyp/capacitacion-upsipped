@@ -25,6 +25,9 @@ jQuery(document).ready(function(){
       jQuery("#SEDE_CAP").on('input', function (evt) {
 				jQuery(this).val(jQuery(this).val().replace(/[^A-Za-zÑ-ñáéíóúÁÉÍÓÚ ]/g, ''));
 			});
+      jQuery("#NUMERO_GAFETE").on('input', function (evt) {
+      jQuery(this).val(jQuery(this).val().replace(/[^A-Za-z0-9- ]/g, ''));
+      });
 
 
 		});
