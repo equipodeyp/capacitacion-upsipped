@@ -7,6 +7,12 @@ if (!isset($name)) {
     header("location: ../logout.php");
 }
 
+// Search functionality
+$where = "";
+$mostrar = 0;
+$contador = 0;
+
+
 $sentencia = "SELECT nombre, area, apellido_p, apellido_m FROM usuarios WHERE nombre='$name'";
 $result = $mysqli->query($sentencia);
 $row = $result->fetch_assoc();
@@ -15,6 +21,7 @@ $row = $result->fetch_assoc();
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CAPACITACION SIPPSIPPED</title>
@@ -47,13 +54,16 @@ $row = $result->fetch_assoc();
    <script type="text/javascript">
   $(document).ready(function() {
       $('#example').DataTable({
+        scrollX: true,
+        scrollCollapse: true,
+        // searching: false,
           language: {
                   "lengthMenu": "Mostrar _MENU_ registros",
                   "zeroRecords": "No se encontraron resultados",
                   "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
                   "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
                   "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                  "sSearch": "Buscar:",
+                  "sSearch": "false",
                   "oPaginate": {
                       "sFirst": "Primero",
                       "sLast":"Último",
@@ -113,6 +123,8 @@ $row = $result->fetch_assoc();
             </div>
         </div>
 
+
+
         <!-- Main Content -->
         <div class="main bg-light">
             <!-- Header -->
@@ -121,101 +133,155 @@ $row = $result->fetch_assoc();
                 <img src="../image/capupsipped.png" alt="CAPUPSIPPED" width="1080" height="170">
             </div>
 
-            <!-- Table Section -->
+            <!-- Search Forms -->
+            <div class="container d-flex justify-content-center">
+              <div class="row mt-4">
+                  <form class="d-flex" style="width: 500px;">
+            			<form action="" method="GET">
+            			<input class="form-control me-2 fw-bold" type="search" placeholder="Buscar Capacitacion"
+            			name="busqueda"> <br>
+            			<button class="btn btn control me-2 fw-bold" type="submit" name="enviar" id="ocultar-mostrar"> <b>Buscar </b> </button>
+            			</form>
+              </div>
+              <?php
+            $conexion=mysqli_connect("localhost","root","","sistemacapacitacion");
+            $where="";
 
-                <div class="col-lg-12">
-                    <div class="table-responsive container">
-                        <h3 class="text-center"> </h3>
-                        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                            <thead>
-                              <tr>
-                                <th class="text-center" colspan="24" >CURSO</th>
-
-                              </tr>
-                                <tr>
-                                    <th class="text-center">No.</th>
-                                    <th class="text-center">NUM DE GAFETE</th>
-                                    <th class="text-center">RFC</th>
-                                    <th class="text-center">CUIP</th>
-                                    <th class="text-center">APELLIDO PATERNO</th>
-                                    <th class="text-center">APELLIDO MATERNO</th>
-                                    <th class="text-center">NOMBRE</th>
-                                    <th class="text-center">CARGO/PUESTO</th>
-                                    <th class="text-center">FUNCIONES</th>
-                                    <th class="text-center">ADSCRIPCIÓN</th>
-                                    <th class="text-center">MODALIDAD</th>
-                                    <th class="text-center">TIPO DE CAPACITACIÓN(SEMINARIO, PLATICA, CURSO, CONFERENCIA,)</th>
-                                    <th class="text-center">NOMBRE DEL CURSO</th>
-                                    <th class="text-center">FECHA INICIO</th>
-                                    <th class="text-center">FECHA TERMINO</th>
-                                    <th class="text-center">PONENTES</th>
-                                    <th class="text-center">PROYECTO</th>
-                                    <th class="text-center">TOTAL DE HORAS</th>
-                                    <th class="text-center">SEDE</th>
-                                    <th class="text-center">CORREO ELECTRÓNICO</th>
-                                    <th class="text-center">NUM DE CELULAR</th>
-                                    <th class="text-center">ULTIMO GRADO DE ESTUDIOS</th>
-                                    <th class="text-center">SEXO</th>
-                                </tr>
-                                  </thead>
-                                        <tbody>
-                                          <?php
-                                          $contador= 0;
-                                          $totalcapacitaciones= "select * from curso_por_servidor";
-                                          $rtotalcapacitaciones= $mysqli->query($totalcapacitaciones);
-                                          while ($ftotalcapacitaciones=$rtotalcapacitaciones->fetch_assoc())
-                                          {
-                                                $contador = $contador + 1;
-                                                $idservidor = $ftotalcapacitaciones['id_servidor'];//variable que almacena el id unico del servidor publico
-                                                $idcapacitacion = $ftotalcapacitaciones['id_curso'];//variable que guarda el id de la capacitacion
-                                                // consulta para traer datos del servidor unico
-                                                $datosservidor = "select * from datosservidor WHERE id='$idservidor'";
-                                                $rdatosservidor = $mysqli->query($datosservidor);
-                                                $fdatosservidor = $rdatosservidor->fetch_assoc();
-                                                  // consulta para traer datos de la capacitacion
-                                                  $datos_capacitaciones = "select * from datos_capacitaciones WHERE id='$idcapacitacion'";
-                                                  $rdatos_capacitaciones = $mysqli->query($datos_capacitaciones);
-                                                  $fdatos_capacitaciones = $rdatos_capacitaciones->fetch_assoc();
-                                                echo "<tr>";
-                                                echo "<td style='text-align:center'>"; echo $contador; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['num_gafete']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['rfc']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['cuip']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['a_paterno']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['a_materno']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['nombre']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['cargo']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['funciones']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['adscripcion']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatos_capacitaciones['modalidad']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatos_capacitaciones['tipo_capacitacion']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatos_capacitaciones['nombre_capacitacion']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatos_capacitaciones['fecha_inicio']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatos_capacitaciones['fecha_termino']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatos_capacitaciones['ponente']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo "pendiente por checar"; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatos_capacitaciones['total_horas']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatos_capacitaciones['sede']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['correo_institucional']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['celular']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['grado_estudios']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['sexo']; echo "</td>";
-                                                echo "</tr>";
-                                          }
-
-                                        ?>
-
-                                        </tbody>
+            if(isset($_GET['enviar'])){
+              $busqueda = $_GET['busqueda'];
 
 
-                            </thead>
-                            <tbody>
-                             <!-- Table content will be dynamically populated -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+            	if (isset($_GET['busqueda']))
+            	{
+            		$where="WHERE datos_capacitaciones.nombre_capacitacion LIKE'%".$busqueda."%' OR modalidad  LIKE'%".$busqueda."%'
+                OR tema  LIKE'%".$busqueda."%'";
+                $mostrar = 1;
+            	}
+
+            }
+
+
+            ?>
+                       <br>
+
+
+            			</form>
             </div>
+
+            <?php
+            if ($mostrar === 1) {
+              // code...
+             ?>
+                  <div class="container">
+                  <table id="example" class=" container table table-striped table-bordered" cellspacing="0" width="50%">
+
+
+                                     <thead>
+                                     <tr>
+                                       <th class="text-center">No.</th>
+                                       <th class="text-center">NUM DE GAFETE</th>
+                                       <th class="text-center">RFC</th>
+                                       <th class="text-center">CUIP</th>
+                                       <th class="text-center">APELLIDO PATERNO</th>
+                                       <th class="text-center">APELLIDO MATERNO</th>
+                                       <th class="text-center">NOMBRE</th>
+                                       <th class="text-center">CARGO/PUESTO</th>
+                                       <th class="text-center">FUNCIONES</th>
+                                       <th class="text-center">ADSCRIPCIÓN</th>
+                                       <th class="text-center">MODALIDAD</th>
+                                       <th class="text-center">TIPO DE CAPACITACIÓN(SEMINARIO, PLATICA, CURSO, CONFERENCIA,)</th>
+                                       <th class="text-center">NOMBRE DEL CURSO</th>
+                                       <th class="text-center">FECHA INICIO</th>
+                                       <th class="text-center">FECHA TERMINO</th>
+                                       <th class="text-center">PONENTES</th>
+                                       <th class="text-center">PROYECTO</th>
+                                       <th class="text-center">TOTAL DE HORAS</th>
+                                       <th class="text-center">SEDE</th>
+                                       <th class="text-center">CORREO ELECTRÓNICO</th>
+                                       <th class="text-center">NUM DE CELULAR</th>
+                                       <th class="text-center">ULTIMO GRADO DE ESTUDIOS</th>
+                                       <th class="text-center">SEXO</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+            				                                    <?php
+
+                                                        $conexion=mysqli_connect("localhost","root","","sistemacapacitacion");
+                                                        $SQL="SELECT * FROM datos_capacitaciones
+                                                        LEFT JOIN curso_por_servidor ON datos_capacitaciones.id = curso_por_servidor.id_curso $where";
+                                                        $dato = mysqli_query($conexion, $SQL);
+
+                                                        if($dato -> num_rows >0){
+                                                          while($fila=mysqli_fetch_array($dato)){
+                                                            $fila['id_servidor'];
+                                                            $contador = $contador + 1;
+
+                                                            $idservidor = $fila['id_servidor'];//variable que almacena el id unico del servidor publico
+                                                            $idcapacitacion = $fila['id_curso'];//variable que guarda el id de la capacitacion
+                                                            // consulta para traer datos del servidor unico
+                                                            $datosservidor = "select * from datosservidor WHERE id='$idservidor'";
+                                                            $rdatosservidor = $conexion->query($datosservidor);
+                                                            $fdatosservidor = $rdatosservidor->fetch_assoc();
+                                                              // consulta para traer datos de la capacitacion
+                                                              $datos_capacitaciones = "select * from datos_capacitaciones WHERE id='$idcapacitacion'";
+                                                              $rdatos_capacitaciones = $conexion->query($datos_capacitaciones);
+                                                              while ($fdatos_capacitaciones = $rdatos_capacitaciones->fetch_assoc()) {
+                                                                // code...
+                                                                echo "<tr>";
+                                                                echo "<td style='text-align:center'>"; echo $contador; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['num_gafete']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['rfc']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['cuip']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['a_paterno']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['a_materno']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['nombre']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['cargo']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['funciones']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['adscripcion']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatos_capacitaciones['modalidad']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatos_capacitaciones['tipo_capacitacion']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatos_capacitaciones['nombre_capacitacion']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatos_capacitaciones['fecha_inicio']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatos_capacitaciones['fecha_termino']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatos_capacitaciones['ponente']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo "pendiente por checar"; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatos_capacitaciones['total_horas']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatos_capacitaciones['sede']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['correo_institucional']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['celular']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['grado_estudios']; echo "</td>";
+                                                                echo "<td style='text-align:center'>"; echo $fdatosservidor['sexo']; echo "</td>";
+                                                                echo "</tr>";
+                                                              }
+
+                                                              ?>
+
+
+
+                                                              <?php
+                                                            }
+                                                          }else{
+
+                                                            ?>
+                                                            <tr class="text-center">
+                                                              <td colspan="16">No existen registros</td>
+                                                            </tr>
+
+
+                                                            <?php
+
+                                                          }
+
+                                                          ?>
+
+
+                                                        </tbody>
+                                                      </table>
+                                                      <?php
+                                                    }
+                                                    ?>
         </div>
     </div>
 <a href="admin.php" class="btn-flotante">Regresar</a>
