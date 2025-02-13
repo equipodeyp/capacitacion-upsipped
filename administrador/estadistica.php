@@ -207,6 +207,7 @@ div.dt-right-in-div {
 
 
                                      <thead>
+
                                      <tr>
                                        <th class="text-center">No.</th>
                                        <th class="text-center">NUM DE GAFETE</th>
@@ -244,6 +245,7 @@ div.dt-right-in-div {
                                                         $dato = mysqli_query($conexion, $SQL);
 
                                                         if($dato -> num_rows >0){
+
                                                           while($fila=mysqli_fetch_array($dato)){
                                                             $fila['id_servidor'];
                                                             $contador = $contador + 1;
@@ -305,6 +307,38 @@ div.dt-right-in-div {
                                                           }
 
                                                           ?>
+
+
+
+
+
+
+                                                                             <tr>
+                                                                               <th class="text-center" style="border:0px dotted black;">CONFERENCIA:</th>
+                                                                               <th class="text-center" style="border:0px dotted black;"><?php echo $busqueda; ?></th>
+                                                                               <th class="text-center" style="border:0px dotted black;">PARTICIPANTES:</th>
+                                                                               <th class="text-center" style="border:0px dotted black;"><?php echo $dato -> num_rows; ?></th>
+                                                                               <th class="text-center" style="border:0px dotted black;"></th>
+                                                                               <th class="text-center" style="border:0px dotted black;"></th>
+                                                                               <th class="text-center" style="border:0px dotted black;"></th>
+                                                                               <th class="text-center" style="border:0px dotted black;"></th>
+                                                                               <th class="text-center" style="border:0px dotted black;"></th>
+                                                                               <th class="text-center" style="border:0px dotted black;"></th>
+                                                                               <th class="text-center" style="border:0px dotted black;"></th>
+                                                                               <th class="text-center" style="border:0px dotted black;"></th>
+                                                                               <th class="text-center" style="border:0px dotted black;"></th>
+                                                                               <th class="text-center" style="border:0px dotted black;"></th>
+                                                                               <th class="text-center" style="border:0px dotted black;"></th>
+                                                                               <th class="text-center" style="border:0px dotted black;"></th>
+                                                                               <th class="text-center" style="border:0px dotted black;"></th>
+                                                                               <th class="text-center" style="border:0px dotted black;"></th>
+                                                                               <th class="text-center" style="border:0px dotted black;"></th>
+                                                                               <th class="text-center" style="border:0px dotted black;"></th>
+                                                                               <th class="text-center" style="border:0px dotted black;"></th>
+                                                                               <th class="text-center" style="border:0px dotted black;"></th>
+                                                                               <th class="text-center" style="border:0px dotted black;"></th>
+
+                                                                            </tr>
 
 
                                                         </tbody>
