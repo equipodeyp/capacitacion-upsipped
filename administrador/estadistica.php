@@ -56,7 +56,7 @@ $row = $result->fetch_assoc();
       $('#example').DataTable({
         scrollX: true,
         scrollCollapse: true,
-        // searching: false,
+        searching: false, //Bfrtilp
           language: {
                   "lengthMenu": "Mostrar _MENU_ registros",
                   "zeroRecords": "No se encontraron resultados",
@@ -74,7 +74,8 @@ $row = $result->fetch_assoc();
               },
           // para usar los botones
           responsive: "true",
-          dom: 'Bfrtilp',
+          dom: '<"dt-top-container"<"dt-left-in-div"f><"dt-center-in-div"B><"dt-left-in-div"l>r>t<ip>',
+          // dom: '<"dt-top-container"<"dt-left-in-div"B><"dt-center-in-div"f><"dt-right-in-div"rtilp>><>',
           buttons:[
         {
           extend:    'excelHtml5',
@@ -99,7 +100,36 @@ $row = $result->fetch_assoc();
   });
   </script>
 <link rel="stylesheet" href="../css/button_notification.css" type="text/css">
+<style media="screen">
+div.dt-top-container {
+/*     display: grid;
+  grid-template-columns: auto auto auto;
+   */
+text-align:left;
+margin: 30px 0;
+}
 
+div.dt-center-in-div {
+  margin: 0 auto;
+  display: inline-block;
+}
+
+div.dt-filter-spacer {
+  margin: 10px 0;
+}
+
+td.highlight {
+  background-color: whitesmoke !important;
+}
+
+div.dt-left-in-div {
+  float: right;
+}
+
+div.dt-right-in-div {
+  float: right;
+}
+</style>
 </head>
 <body>
     <div class="contenedor">
