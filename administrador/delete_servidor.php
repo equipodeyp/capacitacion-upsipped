@@ -12,11 +12,19 @@ if ($verificar_no_recarga === 1) {
   $deleteservidor = "DELETE FROM datosservidor WHERE id='$idservidor'";
   $res_deleteservidor = $mysqli->query($deleteservidor);
 
+  $delete_cursos = "DELETE FROM curso_por_servidor WHERE id_servidor='$idservidor'";
+   $res_delete_cursos = $mysqli->query($delete_cursos);
+
   if($res_deleteservidor){
     echo ("<script type='text/javaScript'>
      window.location.href='../administrador/buscarservidor.php';
      window.alert('!!!!!Registro exitoso¡¡¡¡¡')
    </script>");
+  } else {
+ echo ("<script type='text/javaScript'>
+  window.location.href='../administrador/buscarservidor.php';
+  window.alert('Error al eliminar el registro')
+</script>");
   }
 }else {
    "<META HTTP-EQUIV='Refresh' CONTENT='0; url=..administrador/admin.php'>";
