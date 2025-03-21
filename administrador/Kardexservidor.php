@@ -1,131 +1,165 @@
-
 <?php
-/*require 'conexion.php';*/
 include("conexion.php");
-session_start ();
-$verificar_no_recarga = 1;
-$_SESSION["verificar_no_recarga"] = $verificar_no_recarga;
+session_start();
+
 $name = $_SESSION['usuario'];
 if (!isset($name)) {
-  header("location: ../logout.php");
+    header("location: ../logout.php");
 }
-$sentencia=" SELECT nombre, area, apellido_p, apellido_m FROM usuarios WHERE nombre='$name'";
+
+// Search functionality
+$where = "";
+$mostrar = 0;
+$contador = 0;
+
+
+$sentencia = "SELECT nombre, area, apellido_p, apellido_m FROM usuarios WHERE nombre='$name'";
 $result = $mysqli->query($sentencia);
-$row=$result->fetch_assoc();
-
-
-
-
-$qry = "select max(ID) As id from datos_capacitaciones";
-$result = $mysqli->query($qry);
 $row = $result->fetch_assoc();
-$num_consecutivo =$row["id"];
+?>
 
-
-
-
- ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPACITACION SIPPSIPPED</title>
 
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.css">
+    <link rel="stylesheet" href="../css/cli.css">
+    <link rel="stylesheet" href="../css/main2.css">
+    <link rel="stylesheet" href="../datatables/datatables.min.css">
+    <link rel="stylesheet" href="../datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/solid.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/fontawesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css">
 
-  <script src="../js/botonatras.js"></script>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<title>CAPACITACION SIPPSIPPED</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="../js/jquery-3.1.1.min.js"></script>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/bootstrap-theme.css" rel="stylesheet">
-<script src="../js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="../css/cli.css">
-<!-- CSS personalizado -->
-<link rel="stylesheet" href="../css/main2.css">
-<!--datables CSS básico-->
-<link rel="stylesheet" type="text/css" href="../datatables/datatables.min.css"/>
-<!--datables estilo bootstrap 4 CSS-->
-<link rel="stylesheet"  type="text/css" href="../datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-<!--font awesome con CDN-->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-<!-- datatables JS -->
-<script type="text/javascript" src="../datatables/datatables.min.js"></script>
-<!-- para usar botones en datatables JS -->
-<script src="../datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
-<script src="../datatables/JSZip-2.5.0/jszip.min.js"></script>
-<script src="../datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
-<script src="../datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
-<script src="../datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/solid.css" integrity="sha384-DhmF1FmzR9+RBLmbsAts3Sp+i6cZMWQwNTRsew7pO/e4gvzqmzcpAzhDIwllPonQ" crossorigin="anonymous"/>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/fontawesome.css" integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous"/>
-<!-- MATERIAL PARA USAR TOAST MENSAJES DE ALERTA  -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
-<!-- SCRIPT PARA EL MANEJO DE LA TABLA -->
-  <script type="text/javascript">
-  $(document).ready(function() {
-      $('#example').DataTable({
-          language: {
-                  "lengthMenu": "Mostrar _MENU_ registros",
-                  "zeroRecords": "No se encontraron resultados",
-                  "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                  "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                  "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                  "sSearch": "Buscar:",
-                  "oPaginate": {
-                      "sFirst": "Primero",
-                      "sLast":"Último",
-                      "sNext":"Siguiente",
-                      "sPrevious": "Anterior"
-             },
-             "sProcessing":"Procesando...",
-              },
-      });
-  });
-  </script>
+    <!-- JavaScript Files -->
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/botonatras.js"></script>
+    <script src="../datatables/datatables.min.js"></script>
+    <script src="../datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
+    <script src="../datatables/JSZip-2.5.0/jszip.min.js"></script>
+    <script src="../datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
+    <script src="../datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
+    <script src="../datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
-</head>
-<body>
-  <div class="contenedor">
-    <div class="sidebar ancho">
-      <div class="logo text-warning">
-      </div>
-      <div style="text-align:center" class="user">
-        <?php
-        $sentencia=" SELECT nombre, area, apellido_p, apellido_m, sexo FROM usuarios WHERE nombre='$name'";
-        $result = $mysqli->query($sentencia);
-        $row=$result->fetch_assoc();
-        $genero = $row['sexo'];
+                            <!-- DataTables Configuration -->
+                             <script type="text/javascript">
+                            $(document).ready(function() {
+                                $('#example').DataTable({
+                                  scrollX: true,
+                                  scrollCollapse: true,
+                                  searching: false, //Bfrtilp
+                                    language: {
+                                            "lengthMenu": "Mostrar _MENU_ registros",
+                                            "zeroRecords": "No se encontraron resultados",
+                                            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                                            "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                                            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                                            "sSearch": "false",
+                                            "oPaginate": {
+                                                "sFirst": "Primero",
+                                                "sLast":"Último",
+                                                "sNext":"Siguiente",
+                                                "sPrevious": "Anterior"
+                                       },
+                                       "sProcessing":"Procesando...",
+                                        },
+                                    // para usar los botones
+                                    responsive: "true",
+                                    dom: '<"dt-top-container"<"dt-left-in-div"f><"dt-center-in-div"B><"dt-left-in-div"l>r>t<ip>',
+                                    // dom: '<"dt-top-container"<"dt-left-in-div"B><"dt-center-in-div"f><"dt-right-in-div"rtilp>><>',
+                                    buttons:[
+                                  {
+                                    extend:    'excelHtml5',
+                                    text:      '<i class="fas fa-file-excel"></i> ',
+                                    titleAttr: 'Exportar a Excel',
+                                    className: 'btn btn-success',
+                                    title:      'KARDEX SERVIDOR'
+                                  },
+                                  // {
+                                  //   extend:    'pdfHtml5',
+                                  //   text:      '<i class="fas fa-file-pdf"></i> ',
+                                  //   titleAttr: 'Exportar a PDF',
+                                  //   className: 'btn btn-danger'
+                                  // },
+                                  // {
+                                  //   extend:    'print',
+                                  //   text:      '<i class="fa fa-print"></i> ',
+                                  //   titleAttr: 'Imprimir',
+                                  //   className: 'btn btn-info'
+                                  // },
+                                ]
+                                });
+                            });
+                            </script>
+                          <link rel="stylesheet" href="../css/button_notification.css" type="text/css">
+                          <style media="screen">
+                          div.dt-top-container {
+                          /*     display: grid;
+                            grid-template-columns: auto auto auto;
+                             */
+                          text-align:left;
+                          margin: 30px 0;
+                          }
 
-        if ($genero=='Mujer') {
-          echo "<img src='../image/mujerup.png' width='100' height='100'>";
-        }
+                          div.dt-center-in-div {
+                            margin: 0 auto;
+                            display: inline-block;
+                          }
 
-        if ($genero=='Hombre') {
-          echo "<img src='../image/hombreup.jpg' width='100' height='100'>";
-        }
-        ?>
-        <h6 style="text-align:center" class='user-nombre'>  <?php echo "" . $_SESSION['usuario']; ?> </h6>
-      </div>
-      <nav class="menu-nav">
-        <ul>
-            <li class="menu-items"><a  href="#" onclick="location.href='registrarservidor.php'"><i class="color-icon fa-solid fa-comment-dots menu-nav--icon fa-fw"></i><span style="color: white; font-weight:bold;">SERVIDOR PUBLICO</span></a></li>
-            <li class="menu-items"><a  href="#" onclick="location.href='registrarcapacitacion.php'"><i class="color-icon fa-solid fa-comment-dots menu-nav--icon fa-fw"></i><span style="color: white; font-weight:bold;">CAPACITACIÓN</span></a></li>
-            <li class="menu-items"><a  href="#" onclick="location.href='asignarcurso.php'"><i class="color-icon fa-solid fa-comment-dots menu-nav--icon fa-fw"></i><span style="color: white; font-weight:bold;">ASIGNAR CURSO</span></a></li>
-            <li class="menu-items"><a  href="#" onclick="location.href='estadistica.php'"><i class="color-icon fa-solid fa-comment-dots menu-nav--icon fa-fw"></i><span style="color: white; font-weight:bold;">ESTADISTICA</span></a></li>
-            <li class="menu-items"><a  href="#" onclick="location.href='Kardexservidor.php'"><i class="color-icon fa-solid fa-comment-dots menu-nav--icon fa-fw"></i><span style="color: white; font-weight:bold;">KARDEX</span></a></li>
-            <!-- <li class="menu-items"><a  href="#" onclick="location.href='repo.php'"><i class="fa-solid fa-folder-plus menu-nav--icon fa-fw  "></i><span> Repositorio </span></a></li> -->
-            <!-- <a href="#" data-toggle="modal" data-target="#add_data_Modal_convenio"><i class='color-icon fas fa-file-pdf  menu-nav--icon fa-fw'></i><span style="color: white; font-weight:bold;" class="menu-items">GLOSARIO</span></a>
-            <a href="#"><i class='color-icon fa-solid fa-magnifying-glass  menu-nav--icon fa-fw'></i><span style="color: white; font-weight:bold;" class="menu-items">BUSQUEDA</span></a>
-            <li class="menu-items"><a href="../administrador/estadistica.php"><i class="color-icon fa-solid fa-chart-line menu-nav--icon fa-fw"></i><span style="color: white; font-weight:bold;"class="menu-items"> ESTADISTICA</span></a></li> -->
-                                          </ul>
-                                      </nav>
-                                        </div>
-                                        <!-- checar -->
-                                        <div class="main bg-light">
+                          div.dt-filter-spacer {
+                            margin: 10px 0;
+                          }
+
+                          td.highlight {
+                            background-color: whitesmoke !important;
+                          }
+
+                          div.dt-left-in-div {
+                            float: right;
+                          }
+
+                          div.dt-right-in-div {
+                            float: right;
+                          }
+                          </style>
+                          </head>
+                          <body>
+                                  <div class="contenedor">
+                                      <!-- Sidebar -->
+                                      <div class="sidebar ancho">
+                                          <div class="logo text-warning"></div>
+                                          <div class="user text-center">
+                                              <?php
+                                              $sentencia = "SELECT nombre, area, apellido_p, apellido_m, sexo FROM usuarios WHERE nombre='$name'";
+                                              $result = $mysqli->query($sentencia);
+                                              $row = $result->fetch_assoc();
+                                              $genero = $row['sexo'];
+
+                                              if ($genero == 'Mujer') {
+                                                  echo "<img src='../image/mujerup.png' width='100' height='100'>";
+                                              } else if ($genero == 'Hombre') {
+                                                  echo "<img src='../image/hombreup.jpg' width='100' height='100'>";
+                                              }
+                                              ?>
+                                              <h6 class="user-nombre"><?php echo $_SESSION['usuario']; ?></h6>
+                                          </div>
+                                      </div>
+
+                                      <!-- Main Content -->
+                                      <div class="main bg-light">
+                                          <!-- Header -->
                                           <div class="barra">
-                                              <img src="../image/fiscalia.png" alt="" width="150" height="150">
-                                              <img src="../image/capupsipped.png" alt="" width="1080" height="170">
+                                              <img src="../image/fiscalia.png" alt="Fiscalia" width="150" height="150">
+                                              <img src="../image/capupsipped.png" alt="CAPUPSIPPED" width="1080" height="170">
                                           </div>
                                           <div class="">
                                             <div class="row">
@@ -136,7 +170,7 @@ $num_consecutivo =$row["id"];
                                                       <h3 style="text-align:center">KARDEX SERVIDOR</h3>
                                                       <tr>
                                                         <th class="text-center">No.</th>
-                                                        <th class="text-center">NOMBRE DEL SERVIDOR PÚBLICO </th>'
+                                                        <th class="text-center">NOMBRE DEL SERVIDOR PÚBLICO </th>
                                                         <th class="text-center">ÁREA ADMINISTRATIVA</th>
                                                         <th class="text-center">PLAZA DEL SERVICIO PÚBLICO</th>
                                                         <th class="text-center">CURSO QUE RECIBIÓ </th>
