@@ -1,7 +1,10 @@
+
 <?php
 /*require 'conexion.php';*/
 include("conexion.php");
 session_start ();
+$verificar_no_recarga = 1;
+$_SESSION["verificar_no_recarga"] = $verificar_no_recarga;
 $name = $_SESSION['usuario'];
 if (!isset($name)) {
   header("location: ../logout.php");
@@ -9,10 +12,24 @@ if (!isset($name)) {
 $sentencia=" SELECT nombre, area, apellido_p, apellido_m FROM usuarios WHERE nombre='$name'";
 $result = $mysqli->query($sentencia);
 $row=$result->fetch_assoc();
+
+
+
+
+$qry = "select max(ID) As id from datos_capacitaciones";
+$result = $mysqli->query($qry);
+$row = $result->fetch_assoc();
+$num_consecutivo =$row["id"];
+
+
+
+
  ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
+
   <script src="../js/botonatras.js"></script>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <title>CAPACITACION SIPPSIPPED</title>
@@ -101,73 +118,75 @@ $row=$result->fetch_assoc();
             <!-- <a href="#" data-toggle="modal" data-target="#add_data_Modal_convenio"><i class='color-icon fas fa-file-pdf  menu-nav--icon fa-fw'></i><span style="color: white; font-weight:bold;" class="menu-items">GLOSARIO</span></a>
             <a href="#"><i class='color-icon fa-solid fa-magnifying-glass  menu-nav--icon fa-fw'></i><span style="color: white; font-weight:bold;" class="menu-items">BUSQUEDA</span></a>
             <li class="menu-items"><a href="../administrador/estadistica.php"><i class="color-icon fa-solid fa-chart-line menu-nav--icon fa-fw"></i><span style="color: white; font-weight:bold;"class="menu-items"> ESTADISTICA</span></a></li> -->
-        </ul>
-    </nav>
+                                          </ul>
+                                      </nav>
+                                        </div>
+                                        <!-- checar -->
+                                        <div class="main bg-light">
+                                          <div class="barra">
+                                              <img src="../image/fiscalia.png" alt="" width="150" height="150">
+                                              <img src="../image/capupsipped.png" alt="" width="1080" height="170">
+                                          </div>
+                                          <div class="">
+                                            <div class="row">
+                                              <div class="col-lg-12">
+                                                <div class="table-center container">
+                                                  <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                                    <thead>
+                                                      <h3 style="text-align:center">KARDEX SERVIDOR</h3>
+                                                      <tr>
+                                                        <th class="text-center">No.</th>
+                                                        <th class="text-center">NOMBRE DEL SERVIDOR PÚBLICO </th>'
+                                                        <th class="text-center">ÁREA ADMINISTRATIVA</th>
+                                                        <th class="text-center">PLAZA DEL SERVICIO PÚBLICO</th>
+                                                        <th class="text-center">CURSO QUE RECIBIÓ </th>
+                                                        <th class="text-center">NOMBRE DE LA ISTITUCIÓN</th>
+                                                        <th class="text-center">MODALIDAD</th>
+                                                        <th class="text-center">FECHA DE INICIO DEL CURSO</th>
+                                                        <th class="text-center">FECHA FIN DE CURSO</th>
+                                                        <th class="text-center">TOTAL DE HORAS CURSO</th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                      <?php
+                                                      $contador= 0;
+                                                      $tabla="SELECT * FROM curso_por_servidor";
+                                                      $var_resultado = $mysqli->query($tabla);
+                                                      while ($var_fila=$var_resultado->fetch_assoc())
+                                                      {
+                                                        $idcurso=$var_fila['id_curso'];
+                                                        $idservidor=$var_fila['id_servidor'];
+                                                        $cant="SELECT * FROM datosservidor WHERE id = '$idservidor'";
+                                                        $r=$mysqli->query($cant);
+                                                        $row2 = $r->fetch_assoc();
 
-    </div>
-    <!-- checar -->
-    <div class="main bg-light">
-      <div class="barra">
-          <img src="../image/fiscalia.png" alt="" width="150" height="150">
-          <img src="../image/capupsipped.png" alt="" width="1080" height="170">
-      </div>
-      <div class="">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="table-responsive container">
-              <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <thead>
-                  <h3 style="text-align:center">Registros</h3>
-                  <tr>
-                    <th style="text-align:center">No.</th>
-                    <th style="text-align:center">NOMBRE DE LA CAPACITACION</th>
-                    <th style="text-align:center">FECHA DE INICIO</th>
-                    <th style="text-align:center">FECHA DE TERMINO</th>
-                    <th style="text-align:center">NO. DE PARTICIPANTES</th>
-                    <th style="text-align:center">LISTA DE PARTICIPANTES</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                                          $contador= 0;
-                                          $tabla="SELECT * FROM datos_capacitaciones";
-                                          $var_resultado = $mysqli->query($tabla);
-                                          while ($var_fila=$var_resultado->fetch_array())
-                                          {
-                                            $fol_exp2=$var_fila['id'];
-                                            $abc="SELECT count(*) as c FROM datos_capacitaciones";
-                                            $result=$mysqli->query($abc);
-                                            if($result)
-                                            {
-                                              while($row=mysqli_fetch_assoc($result)){
-                                                $cant="SELECT COUNT(*) AS cant FROM curso_por_servidor WHERE id_curso = '$fol_exp2'";
-                                                $r=$mysqli->query($cant);
-                                                $row2 = $r->fetch_array(MYSQLI_ASSOC);
-                                                $contador = $contador + 1;
-                                                echo "<tr>";
-                                                echo "<td style='text-align:center'>"; echo $contador; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $var_fila['nombre_capacitacion']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $var_fila['fecha_inicio']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $var_fila['fecha_termino']; echo "</td>";
-                                                echo "<td style='text-align:center'>"; echo $row2['cant']; echo "</td>";
-                                                echo "<td style='text-align:center'>";
-                                                echo "<a href='#edit_".$var_fila['id']."' class='btn color-btn-success btn-sm' data-toggle='modal'><i class='fa-solid fa-file-pen'></i> Detalle</a>";
-                                                include('verparticipantes.php');
-                                                echo "</td>";
-                                                echo "</tr>";
+                                                        $cant21="SELECT * FROM datos_capacitaciones WHERE id = '$idcurso'";
+                                                        $r21=$mysqli->query($cant21);
+                                                        $row221 = $r21->fetch_assoc();
 
-                                              }
+                                                        $contador = $contador + 1;
+                                                        echo "<tr>";
+                                                        echo "<td style='text-align:center'>"; echo $contador; echo "</td>";
+                                                        echo "<td style='text-align:center'>";
+                                                        echo $row2['a_paterno'] . " " . $row2['a_materno'] . " " .  $row2['nombre']; echo "</td>";
+                                                        echo "<td style='text-align:center'>"; echo $row2['unidad_administrativa']; echo "</td>";
+                                                        echo "<td style='text-align:center'>"; echo $row2['cargo']; echo "</td>";
+                                                        echo "<td style='text-align:center'>"; echo $row221['nombre_capacitacion']; echo "</td>";
+                                                        echo "<td style='text-align:center'>"; echo $row221['institucion']; echo "</td>";
+                                                        echo "<td style='text-align:center'>"; echo $row221['modalidad']; echo "</td>";
+                                                        echo "<td style='text-align:center'>"; echo $row221['fecha_inicio']; echo "</td>";
+                                                        echo "<td style='text-align:center'>"; echo $row221['fecha_termino']; echo "</td>";
+                                                        echo "<td style='text-align:center'>"; echo $row221['total_horas']; echo "</td>";
+                                                        echo "</tr>";
+                                                      }
 
-                                            }
-                                          }
-
-                                        ?>
-
-                  </tbody>
-                </table>
+                                                      ?>
+                                                    </tbody>
+                                                  </table>
               </div>
             </div>
           </div>
+           <a href="admin.php" class="btn-flotante">Regresar</a>
           <a href="../logout.php" class="btn-flotante-dos">Cerrar Sesión</a>
         </div>
       </div>
