@@ -9,6 +9,12 @@ if (!isset($name)) {
 $sentencia=" SELECT nombre, area, apellido_p, apellido_m FROM usuarios WHERE nombre='$name'";
 $result = $mysqli->query($sentencia);
 $row=$result->fetch_assoc();
+
+require_once '../mpdf/vendor/autoload.php';
+
+$mpdf = new \Mpdf\Mpdf();
+$mpdf->WriteHTML('<h1>Hello world!</h1>');
+$mpdf->Output();
  ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -97,6 +103,7 @@ $row=$result->fetch_assoc();
             <li class="menu-items"><a  href="#" onclick="location.href='asignarcurso.php'"><i class="color-icon fa-solid fa-comment-dots menu-nav--icon fa-fw"></i><span style="color: white; font-weight:bold;">ASIGNAR CURSO</span></a></li>
             <li class="menu-items"><a  href="#" onclick="location.href='estadistica.php'"><i class="color-icon fa-solid fa-comment-dots menu-nav--icon fa-fw"></i><span style="color: white; font-weight:bold;">ESTADISTICA</span></a></li>
             <li class="menu-items"><a  href="#" onclick="location.href='Kardexservidor.php'"><i class="color-icon fa-solid fa-comment-dots menu-nav--icon fa-fw"></i><span style="color: white; font-weight:bold;">KARDEX</span></a></li>
+            <li class="menu-items"><a  href="#" onclick="location.href='estadisticasiscap.php'"><i class="color-icon fa-solid fa-comment-dots menu-nav--icon fa-fw"></i><span style="color: white; font-weight:bold;">estadisticasisca</span></a></li>
             <!-- <li class="menu-items"><a  href="#" onclick="location.href='repo.php'"><i class="fa-solid fa-folder-plus menu-nav--icon fa-fw  "></i><span> Repositorio </span></a></li> -->
             <!-- <a href="#" data-toggle="modal" data-target="#add_data_Modal_convenio"><i class='color-icon fas fa-file-pdf  menu-nav--icon fa-fw'></i><span style="color: white; font-weight:bold;" class="menu-items">GLOSARIO</span></a>
             <a href="#"><i class='color-icon fa-solid fa-magnifying-glass  menu-nav--icon fa-fw'></i><span style="color: white; font-weight:bold;" class="menu-items">BUSQUEDA</span></a>

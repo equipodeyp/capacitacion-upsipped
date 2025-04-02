@@ -160,9 +160,9 @@ $(document).ready(function() {
                                         ?>
 
                                         </tbody>
-                         
-                                        <table>        
-                        
+
+                                        <table>
+
 
 
                       </div>
