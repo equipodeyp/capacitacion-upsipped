@@ -1,21 +1,15 @@
 <?php
-/*require 'conexion.php';*/
-include("conexion.php");
-session_start ();
-$name = $_SESSION['usuario'];
-if (!isset($name)) {
-  header("location: ../logout.php");
-}
-$sentencia=" SELECT nombre, area, apellido_p, apellido_m FROM usuarios WHERE nombre='$name'";
-$result = $mysqli->query($sentencia);
-$row=$result->fetch_assoc();
-
-require_once '../mpdf/vendor/autoload.php';
-
-$mpdf = new \Mpdf\Mpdf();
-$mpdf->WriteHTML('<h1>Hello world!</h1>');
-$mpdf->Output();
- ?>
+    /*require 'conexion.php';*/
+    include("conexion.php");
+    session_start ();
+    $name = $_SESSION['usuario'];
+    if (!isset($name)) {
+      header("location: ../logout.php");
+    }
+    $sentencia=" SELECT nombre, area, apellido_p, apellido_m FROM usuarios WHERE nombre='$name'";
+    $result = $mysqli->query($sentencia);
+    $row=$result->fetch_assoc();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
