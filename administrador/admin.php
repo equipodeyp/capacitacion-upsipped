@@ -9,6 +9,7 @@
     $sentencia=" SELECT nombre, area, apellido_p, apellido_m FROM usuarios WHERE nombre='$name'";
     $result = $mysqli->query($sentencia);
     $row=$result->fetch_assoc();
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

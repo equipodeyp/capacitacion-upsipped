@@ -16,6 +16,17 @@ $contador = 0;
 $sentencia = "SELECT nombre, area, apellido_p, apellido_m FROM usuarios WHERE nombre='$name'";
 $result = $mysqli->query($sentencia);
 $row = $result->fetch_assoc();
+
+    require_once '../mpdf/vendor/autoload.php';
+
+    $mpdf = new \Mpdf\Mpdf();
+    $mpdf->WriteHTML('<h1>Hello world!</h1>');
+    $mpdf->Output();
+    require_once '../mpdf/vendor/autoload.php';
+
+    $mpdf = new \Mpdf\Mpdf();
+    $mpdf->WriteHTML('<h1>Hello world!</h1>');
+    $mpdf->Output();
 ?>
 
 <!DOCTYPE html>
@@ -176,6 +187,7 @@ $row = $result->fetch_assoc();
                                         <img src="../image/capupsipped.png" alt="CAPUPSIPPED" width="1080" height="170">
                                     </div>
 
+                                    
                                     
                                     <div class="">
                                     <div class="row">
