@@ -17,16 +17,6 @@ $sentencia = "SELECT nombre, area, apellido_p, apellido_m FROM usuarios WHERE no
 $result = $mysqli->query($sentencia);
 $row = $result->fetch_assoc();
 
-    require_once '../mpdf/vendor/autoload.php';
-
-    $mpdf = new \Mpdf\Mpdf();
-    $mpdf->WriteHTML('<h1>Hello world!</h1>');
-    $mpdf->Output();
-    require_once '../mpdf/vendor/autoload.php';
-
-    $mpdf = new \Mpdf\Mpdf();
-    $mpdf->WriteHTML('<h1>Hello world!</h1>');
-    $mpdf->Output();
 ?>
 
 <!DOCTYPE html>
@@ -186,9 +176,21 @@ $row = $result->fetch_assoc();
                                         <img src="../image/fiscalia.png" alt="Fiscalia" width="150" height="150">
                                         <img src="../image/capupsipped.png" alt="CAPUPSIPPED" width="1080" height="170">
                                     </div>
+                                    <?php
+                                    // Button in HTML form
+                                        echo '<form method="post">';
+                                        echo '<button type="submit" name="download_pdf">Download PDF</button>';
+                                        echo '</form>';
 
-                                    
-                                    
+                                        // PHP code to handle the button click
+                                        if(isset($_POST['download_pdf'])) {
+                                            require_once '../mpdf/vendor/autoload.php';
+                                            $mpdf = new \Mpdf\Mpdf();
+                                            $mpdf->WriteHTML('<h1>Hello world!</h1>');
+                                            $mpdf->Output('document.pdf', 'D'); // 'D' forces download
+                                        }
+                                    ?>
+
                                     <div class="">
                                     <div class="row">
                                     <div class="col-lg-12">
