@@ -1,5 +1,7 @@
 <?php
 include("conexion.php");
+// error_reporting(0);
+date_default_timezone_set("America/Mexico_City");
 session_start();
 
 $name = $_SESSION['usuario'];
@@ -52,56 +54,7 @@ $row = $result->fetch_assoc();
     <script src="../datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
-                            <!-- DataTables Configuration -->
-                             <script type="text/javascript">
-                            $(document).ready(function() {
-                                $('#example').DataTable({
-                                  scrollX: true,
-                                  scrollCollapse: true,
-                                  searching: false, //Bfrtilp
-                                    language: {
-                                            "lengthMenu": "Mostrar _MENU_ registros",
-                                            "zeroRecords": "No se encontraron resultados",
-                                            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                                            "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                                            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                                            "sSearch": "false",
-                                            "oPaginate": {
-                                                "sFirst": "Primero",
-                                                "sLast":"Último",
-                                                "sNext":"Siguiente",
-                                                "sPrevious": "Anterior"
-                                       },
-                                       "sProcessing":"Procesando...",
-                                        },
-                                    // para usar los botones
-                                    responsive: "true",
-                                    dom: '<"dt-top-container"<"dt-left-in-div"f><"dt-center-in-div"B><"dt-left-in-div"l>r>t<ip>',
-                                    // dom: '<"dt-top-container"<"dt-left-in-div"B><"dt-center-in-div"f><"dt-right-in-div"rtilp>><>',
-                            //         buttons:[
-                            //       {
-                            //         extend:    'excelHtml5',
-                            //         text:      '<i class="fas fa-file-excel"></i> ',
-                            //         titleAttr: 'Exportar a Excel',
-                            //         className: 'btn btn-success',
-                            //         title:      'KARDEX SERVIDOR'
-                            //       },
-                            //       // {
-                            //       //   extend:    'pdfHtml5',
-                            //       //   text:      '<i class="fas fa-file-pdf"></i> ',
-                            //       //   titleAttr: 'Exportar a PDF',
-                            //       //   className: 'btn btn-danger'
-                            //       // },
-                            //       // {
-                            //       //   extend:    'print',
-                            //       //   text:      '<i class="fa fa-print"></i> ',
-                            //       //   titleAttr: 'Imprimir',
-                            //       //   className: 'btn btn-info'
-                            //       // },
-                            //     ]
-                            //     });
-                            // });
-                            </script>
+
                           <link rel="stylesheet" href="../css/button_notification.css" type="text/css">
                           <style>
                               body {
@@ -190,7 +143,184 @@ $row = $result->fetch_assoc();
                                             $mpdf->Output('document.pdf', 'D'); // 'D' forces download
                                         }
                                     ?>
+                                    <!-- Search Forms -->
+                                    <div class="container d-flex justify-content-center">
+                                      <div class="row mt-8">
+                                          <form class="d-flex" style="width: 500px;">
+                                          <form action="" method="GET">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="" class="form-label"><b> Del dia</b></label>
+                                                    <input type="date" name="star" id="starfech" class="form-control" required>
+                                                </div>
+                                            </div>
 
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="" class="form-label"><b>Hasta el dia</b> </label>
+                                                    <input type="date" name="fin" id="finfech" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="" class="form-label"><b>BUSCAR</b></label><br>
+                                                    <button type="submit" id="ocultar-mostrar" class="btn btn-primary" name="enviar"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                                </div>
+                                            </div>
+                                             <br>
+                                          <!-- <button class="btn btn-primary control me-2 fw-bold" type="submit" name="enviar" id="ocultar-mostrar"> <b>Buscar </b> </button> -->
+                                          </form>
+                                      </div>
+                                      <?php
+                                    $conexion=mysqli_connect("localhost","root","","sistemacapacitacion");
+                                    $where="";
+
+                                    if(isset($_GET['enviar'])){
+                                      $fechainicial = date("Y-m-d", strtotime($_GET['star']));
+                                      $fechafin  = date("Y-m-d", strtotime($_GET['fin']));
+
+
+                                      if (isset($_GET['star']))
+                                      {
+                                        $where="WHERE datos_capacitaciones.fecha_inicio BETWEEN '$fechainicial' AND '$fechafin'";
+                                        $mostrar = 1;
+                                      }
+
+                                    }
+
+
+                                    ?>
+                                               <br>
+
+
+                                          </form>
+                                    </div>
+                                    <?php
+                                    $totalfin2 = 0;
+                                    $totalfin = 0;
+                                    $totaladmns = array();
+                                    $servidoresid = array();
+                                    function contaradmin($idcapacitacion){
+                                      $mysqli = new mysqli('localhost', 'root', '', 'sistemacapacitacion');
+                                      $traeradm = "SELECT COUNT(*) as total FROM curso_por_servidor
+                                      INNER JOIN datosservidor ON curso_por_servidor.id_servidor = datosservidor.id
+                                      WHERE datosservidor.funciones = 'ADMINISTRATIVAS'AND curso_por_servidor.id_curso = '$idcapacitacion'";
+                                      $rtraeradm = $mysqli->query($traeradm);
+                                      $ftraeradm = $rtraeradm->fetch_assoc();
+                                      echo $totalfin = $ftraeradm['total'];
+                                    }
+                                    if ($mostrar === 1) {
+                                      // echo "fecha inicial--->".$fechainicial;
+                                      // echo "<br>";
+                                      // echo "fecha final--->".$fechafin;
+                                      // echo "<br>";
+                                      $conexion=mysqli_connect("localhost","root","","sistemacapacitacion");
+                                      $SQL="SELECT * FROM datos_capacitaciones $where";
+                                      $dato = mysqli_query($conexion, $SQL);
+                                      $row_cnt = $dato->num_rows;
+                                      if($dato -> num_rows >0){
+                                        while($fila=mysqli_fetch_array($dato)){
+                                        $idunica_cap = $fila['id'];
+
+                                        $c1 = "SELECT DISTINCT curso_por_servidor.id_servidor FROM curso_por_servidor
+                                        INNER JOIN datosservidor ON curso_por_servidor.id_servidor = datosservidor.id
+                                        WHERE datosservidor.funciones = 'ADMINISTRATIVAS'AND curso_por_servidor.id_curso = '$idunica_cap'";
+                                        $rc1 = $mysqli->query($c1);
+                                        while ($fc1 = $rc1->fetch_assoc()) {
+                                          // code...
+                                          echo $iddd = $fc1['id_servidor'];
+                                          array_push($servidoresid, $iddd);
+                                          echo "<br>";
+                                        }
+
+                                          // $mysqli = new mysqli('localhost', 'root', '', 'sistemacapacitacion');
+                                          // $traeradm = "SELECT DISTINCT datosservidor.id FROM curso_por_servidor
+                                          // INNER JOIN datosservidor ON curso_por_servidor.id_servidor = datosservidor.id
+                                          // WHERE datosservidor.funciones = 'ADMINISTRATIVAS'AND curso_por_servidor.id_curso = '$idunica_cap'";
+                                          // $rtraeradm = $mysqli->query($traeradm);
+                                          // $ftraeradm = $rtraeradm->fetch_assoc();
+                                          // $totalfin = $ftraeradm['id'];
+                                          // array_push($totaladmns, $totalfin);
+                                          // echo "<br>";
+                                          // array_push($array);
+                                          // $restotal = $restotal + $sumatotal;
+                                          // echo $restotal;
+                                          // code...
+
+                                      }
+                                      var_dump($servidoresid);
+                                      echo "<br>";
+                                      $resultado = array_unique($servidoresid);
+                                      print_r($resultado);
+                                      echo "<br>";
+                                      // $vartotaladbs = array_sum($totaladmns);
+                                      $length = count($resultado);
+                                      echo $length;
+
+
+
+                                    }else {
+                                      ?>
+                                      <h1>no existen registros</h1>
+                                      <?php
+                                    }
+                                    }
+
+                                    ?>
+                                    <br><br>
+                                    <?php
+                                    function transformarmesaletra($pasardia, $pasarmes, $pasaranio){
+                                      switch ($pasarmes) {
+                                        case 1:
+                                        echo $fecha_formateada = $pasardia." DE ENERO DE ".$pasaranio;
+                                        break;
+                                        case 2:
+                                        echo $fecha_formateada = $pasardia." DE FEBRERO DE ".$pasaranio;
+                                        break;
+                                        case 3:
+                                        echo $fecha_formateada = $pasardia." DE MARZO DE ".$pasaranio;
+                                        break;
+                                        case 4:
+                                        echo $fecha_formateada = $pasardia." DE ABRIL DE ".$pasaranio;
+                                        break;
+                                        case 5:
+                                        echo $fecha_formateada = $pasardia." DE MAYO DE ".$pasaranio;
+                                        break;
+                                        case 6:
+                                        echo $fecha_formateada = $pasardia." DE JUNIO DE ".$pasaranio;
+                                        break;
+                                        case 7:
+                                        echo $fecha_formateada = $pasardia." DE JULIO DE ".$pasaranio;
+                                        break;
+                                        case 8:
+                                        echo $fecha_formateada = $pasardia." DE AGOSTO DE ".$pasaranio;
+                                        break;
+                                        case 9:
+                                        echo $fecha_formateada = $pasardia." DE SEPTIEMBRE DE ".$pasaranio;
+                                        break;
+                                        case 10:
+                                        echo $fecha_formateada = $pasardia." DE OCTUBRE DE ".$pasaranio;
+                                        break;
+                                        case 11:
+                                        echo $fecha_formateada = $pasardia." DE NOVIEMBRE DE ".$pasaranio;
+                                        break;
+                                        case 12:
+                                        echo $fecha_formateada = $pasardia." DE DICIEMBRE DE ".$pasaranio;
+                                        break;
+                                      }
+                                    }
+// $fechainicial;
+$diainicial = date('d', strtotime($fechainicial));
+$mesnumeroinicial = date('m', strtotime($fechainicial));
+$anioinicial = date('Y', strtotime($fechainicial));
+// transformarmesaletra($diainicial, $mesnumeroinicial, $anioinicial);
+// $fechafin;
+$diafinal = date('d', strtotime($fechafin));
+$mesnumerofinal = date('m', strtotime($fechafin));
+$aniofinal = date('Y', strtotime($fechafin));
+
+
+                                    ?>
                                     <div class="">
                                     <div class="row">
                                     <div class="col-lg-12">
@@ -202,11 +332,11 @@ $row = $result->fetch_assoc();
                                             </tr>
                                             <tr>
                                                 <td>Fecha de Inicio</td>
-                                                <td>01 DE MARZO DE 2025</td>
+                                                <td><?php transformarmesaletra($diainicial, $mesnumeroinicial, $anioinicial); ?></td>
                                             </tr>
                                             <tr>
                                                 <td>Fecha de Término</td>
-                                                <td>24 DE MARZO DE 2025</td>
+                                                <td><?php transformarmesaletra($diafinal, $mesnumerofinal, $aniofinal); ?></td>
                                             </tr>
                                         </thead>
                                     </table>
@@ -222,7 +352,9 @@ $row = $result->fetch_assoc();
                                                         <tbody>
                                                             <tr>
                                                                 <td>Administrativo</td>
-                                                                <td>5</td>
+                                                                <td><?php
+                                                                echo $length;
+                                                                ?></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Operativo</td>
