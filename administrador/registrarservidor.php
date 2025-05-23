@@ -230,32 +230,13 @@ a:focus {
           <img src="../image/fiscalia.png" alt="" width="150" height="150">
           <img src="../image/capupsipped.png" alt="" width="1080" height="170">
       </div>
-        <br><br><br><br><br><br><br>
-        <div class="row">
-          <!-- <h1 style="text-align:center">
-            <?php echo mb_strtoupper (html_entity_decode($row['nombre'], ENT_QUOTES | ENT_HTML401, "UTF-8")); ?> </span>
-            <?php echo mb_strtoupper (html_entity_decode($row['apellido_p'], ENT_QUOTES | ENT_HTML401, "UTF-8")); ?> </span>
-            <?php echo mb_strtoupper (html_entity_decode($row['apellido_m'], ENT_QUOTES | ENT_HTML401, "UTF-8")); ?> </span>
-          </h1> -->
-          <h5 style="text-align:center">
-
-
-						<div class="wrap">
-
-						  <div class="secciones">
-
-						  <article id="tab1">
-						  <!-- menu de navegacion de la parte de arriba -->
-						  <div class="secciones form-horizontal sticky breadcrumb flat">
-						            <!-- <a href="../administrador/admin.php">REGISTROS</a>
-						            <a href="../administrador/detalles_expediente.php?folio=<?php echo $fol_exp; ?>">EXPEDIENTE</a> -->
-
-						  </div>
-
-              <H1 style="text-align:center">
-                REGISTRO DEL SERVIDOR
-              </H1>
-						  <p><span><label ></label> * CAMPOS OBLIGATORIOS</span></p>
+      <div class="row">
+        <div class="wrap">
+          <article id="tab1">
+            <div class="text-center mb-4">
+              <h1 class="display-4">REGISTRO DEL SERVIDOR</h1>
+              <h6 class="lead">*CAMPOS OBLIGATORIOS*</h6>
+            </div>
 						    <div class="container">
 						      <form class="container well form-horizontal" id="myform" method="POST" action="../administrador/guardar_servidor.php " enctype= "multipart/form-data">
 						        <div class="row">
@@ -320,7 +301,7 @@ a:focus {
 
                             <div class="col-md-6 mb-3 validar">
                             <label for="FUNCIONES_SERVIDOR">FUNCIONES<span class="required"></span></label>
-                            <select class="form-select form-select-lg" name="FUNCIONES_SERVIDOR" id="FUNCIONES_SERVIDOR" >
+                            <select class="form-select form-select-lg" name="FUNCIONES_SERVIDOR" id="FUNCIONES_SERVIDOR" required>
                               <option disabled selected value>SELECCIONE UNA OPCION</option>
                               <?php
                               $funciones = "SELECT * FROM funciones";
@@ -350,24 +331,24 @@ a:focus {
 
       <div class="col-md-6 mb-3 validar">
       <label for="MUN_NACIMIENTO">MUNICIPIO DE NACIMIENTO<span class="required"></span></label>
-      <input autocomplete="off" class="munnac-servidor verific form-control" id="MUN_NACIMIENTO" name="MUN_NACIMIENTO" value="" type="text">
+      <input autocomplete="off" class="munnac-servidor verific form-control" id="MUN_NACIMIENTO" name="MUN_NACIMIENTO" value="" type="text" required>
          </div>
 
     <div class="col-md-6 mb-3 validar">
     <label for="EST_NACIMIENTO">ESTADO DE NACIMIENTO<span class="required"></span></label>
-    <input autocomplete="off" class="estnac-servidor verific form-control" id="EST_NACIMIENTO" name="EST_NACIMIENTO" value="" type="text" >
+    <input autocomplete="off" class="estnac-servidor verific form-control" id="EST_NACIMIENTO" name="EST_NACIMIENTO" value="" type="text" required>
        </div>
 
 
     <div class="col-md-6 mb-3 validar">
     <label for="PAIS_NACIMIENTO">PAIS DE NACIMIENTO<span class="required"></span></label>
-    <input autocomplete="off" class="paisnac-servidor verific form-control" id="PAIS_NACIMIENTO" name="PAIS_NACIMIENTO" value="" type="text">
+    <input autocomplete="off" class="paisnac-servidor verific form-control" id="PAIS_NACIMIENTO" name="PAIS_NACIMIENTO" value="" type="text" required>
        </div>
 
 
     <div class="col-md-6 mb-3 validar">
     <label for="SEXO">SEXO<span class="required"></span></label>
-    <select class="form-select form-select-lg" name="SEXO" id="SEXO" >
+    <select class="form-select form-select-lg" name="SEXO" id="SEXO" required>
       <option disabled selected value>SELECCIONE UNA OPCION</option>
       <?php
       $sexo = "SELECT * FROM sexo";
@@ -416,23 +397,23 @@ a:focus {
 
                                         <div class="col-md-6 mb-3 validar">
                                         <label for="MUN_RESIDENCIA">MUNICIPIO DE RESIDENCIA<span class="required"></span></label>
-                                        <input autocomplete="off" class="municresidencia-servidor verific form-control" id="MUN_RESIDENCIA" name="MUN_RESIDENCIA" value="" type="text">
+                                        <input autocomplete="off" class="municresidencia-servidor verific form-control" id="MUN_RESIDENCIA" name="MUN_RESIDENCIA" value="" type="text" required>
                                            </div>
 
 
                                            <div class="col-md-6 mb-3 validar">
                                            <label for="EST_RESIDENCIA">ESTADO DE RESIDENCIA<span class="required"></span></label>
-                                           <input autocomplete="off" class="estresidencia-servidor verific form-control" id="EST_RESIDENCIA" name="EST_RESIDENCIA" value="" type="text">
+                                           <input autocomplete="off" class="estresidencia-servidor verific form-control" id="EST_RESIDENCIA" name="EST_RESIDENCIA" value="" type="text" required>
                                               </div>
 
                                               <div class="col-md-6 mb-3 validar">
                                               <label for="PAIS_RESIDENCIA">PAIS DE RESIDENCIA<span class="required"></span></label>
-                                              <input autocomplete="off" class="paisresidencia-servidor verific form-control" id="PAIS_RESIDENCIA" name="PAIS_RESIDENCIA" value="" type="text">
+                                              <input autocomplete="off" class="paisresidencia-servidor verific form-control" id="PAIS_RESIDENCIA" name="PAIS_RESIDENCIA" value="" type="text" required>
                                                  </div>
 
                                                  <div class="col-md-6 mb-3 validar">
                                                  <label for="IDIOMA_DOMINIO">IDIOMA DE DOMINIO<span class="required"></span></label>
-                                                 <input autocomplete="off" class="idiomadominio-servidor verific form-control" id="IDIOMA_DOMINIO" name="IDIOMA_DOMINIO" value="" type="text">
+                                                 <input autocomplete="off" class="idiomadominio-servidor verific form-control" id="IDIOMA_DOMINIO" name="IDIOMA_DOMINIO" value="" type="text" required>
                                                     </div>
 
 
@@ -446,7 +427,7 @@ a:focus {
 
                                                  <div class="col-md-6 mb-3 validar">
                                                   <label for="NIVEL_IDIOMA">NIVEL DE DOMINIO<span class="required"></span></label>
-                                                    <select class="form-select form-select-lg" name="NIVEL_IDIOMA" id="NIVEL_IDIOMA" >
+                                                    <select class="form-select form-select-lg" name="NIVEL_IDIOMA" id="NIVEL_IDIOMA" required >
                                                        <option disabled selected value>SELECCIONE UNA OPCION</option>
                                                        <?php
                                                         $nivelidioma = "SELECT * FROM nivel_idioma";
@@ -462,7 +443,7 @@ a:focus {
 
                                               <div class="col-md-6 mb-3 validar">
                                                <label for="GRADO_DEESTUDIOS" class="is-required">GRADO DE ESTUDIOS<span class="required"></span></label>
-                                               <select class="form-select form-select-lg" name="GRADO_DEESTUDIOS" id="GRADO_DEESTUDIOS" >
+                                               <select class="form-select form-select-lg" name="GRADO_DEESTUDIOS" id="GRADO_DEESTUDIOS" required >
                                                   <option disabled selected value>SELECCIONE UNA OPCION</option>
                                                   <?php
                                                    $grado_deestudios = "SELECT * FROM gradodeestudios";
@@ -489,67 +470,67 @@ a:focus {
   <a href="../logout.php" class="btn-flotante-dos">Cerrar Sesión</a>
   <a href="admin.php" class="btn-flotante">Regresar</a>
   <script>
-    $('.num-gafete').on('input', function () { 
+    $('.num-gafete').on('input', function () {
     this.value = this.value.replace(/[^A-Za-z-0-9- .]/g,'');
   });
-    $('.clave-servidor').on('input', function () { 
+    $('.clave-servidor').on('input', function () {
     this.value = this.value.replace(/[^ 0-9]/g,'');
   });
-    $('.rfc-servidor').on('input', function () { 
+    $('.rfc-servidor').on('input', function () {
     this.value = this.value.replace(/[^A-Za-z 0-9]/g,'');
   });
-  $('.curp-servidor').on('input', function () { 
+  $('.curp-servidor').on('input', function () {
     this.value = this.value.replace(/[^A-Za-z 0-9]/g,'');
   });
-  $('.cuip-servidor').on('input', function () { 
+  $('.cuip-servidor').on('input', function () {
     this.value = this.value.replace(/[^A-Za-z 0-9]/g,'');
   });
-  $('.apaterno-servidor').on('input', function () { 
+  $('.apaterno-servidor').on('input', function () {
     this.value = this.value.replace(/[^A-Za-z]/g,'');
   });
-  $('.amaterno-servidor').on('input', function () { 
+  $('.amaterno-servidor').on('input', function () {
     this.value = this.value.replace(/[^A-Za-z]/g,'');
   });
-  $('.nombre-servidor').on('input', function () { 
+  $('.nombre-servidor').on('input', function () {
     this.value = this.value.replace(/[^A-Za-z ]/g,'');
   });
-  $('.cargo-servidor').on('input', function () { 
+  $('.cargo-servidor').on('input', function () {
     this.value = this.value.replace(/[^A-Za-z]/g,'');
   });
-  $('.adscripcion-servidor').on('input', function () { 
+  $('.adscripcion-servidor').on('input', function () {
     this.value = this.value.replace(/[^A-Za-z -]/g,'');
   });
-  $('.unidadadmin-servidor').on('input', function () { 
+  $('.unidadadmin-servidor').on('input', function () {
     this.value = this.value.replace(/[^A-Za-z]/g,'');
   });
-  $('.munnac-servidor').on('input', function () { 
+  $('.munnac-servidor').on('input', function () {
     this.value = this.value.replace(/[^A-Za-z]/g,'');
   });
-  $('.estnac-servidor').on('input', function () { 
+  $('.estnac-servidor').on('input', function () {
     this.value = this.value.replace(/[^A-Za-z]/g,'');
   });
-  $('.paisnac-servidor').on('input', function () { 
+  $('.paisnac-servidor').on('input', function () {
     this.value = this.value.replace(/[^A-Za-z]/g,'');
   });
-  $('.correopers-servidor').on('input', function () { 
+  $('.correopers-servidor').on('input', function () {
     this.value = this.value.replace(/[^a-zA-Z0-9.@_-]/g,'');
   });
-  $('.correoinst-servidor').on('input', function () { 
+  $('.correoinst-servidor').on('input', function () {
     this.value = this.value.replace(/[^a-zA-Z0-9.@_-]/g,'');
   });
-  $('.correogmail-servidor').on('input', function () { 
+  $('.correogmail-servidor').on('input', function () {
     this.value = this.value.replace(/[^a-zA-Z0-9.@_-]/g,'');
   });
-  $('.municresidencia-servidor').on('input', function () { 
+  $('.municresidencia-servidor').on('input', function () {
     this.value = this.value.replace(/[^A-Za-z]/g,'');
   });
-  $('.estresidencia-servidor').on('input', function () { 
+  $('.estresidencia-servidor').on('input', function () {
     this.value = this.value.replace(/[^A-Za-z]/g,'');
   });
-  $('.paisresidencia-servidor').on('input', function () { 
+  $('.paisresidencia-servidor').on('input', function () {
     this.value = this.value.replace(/[^A-Za-z]/g,'');
   });
-  $('.idiomadominio-servidor').on('input', function () { 
+  $('.idiomadominio-servidor').on('input', function () {
     this.value = this.value.replace(/[^A-Za-z]/g,'');
   });
 

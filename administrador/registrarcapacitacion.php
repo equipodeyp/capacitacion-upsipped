@@ -1,4 +1,3 @@
-
 <?php
 /*require 'conexion.php';*/
 include("conexion.php");
@@ -226,183 +225,143 @@ a:focus {
       <nav class="menu-nav">
         <ul>
             <li class="menu-items"><a  href="#" onclick="location.href='buscarcapacitacion.php'"><i class="color-icon fa-solid fa-comment-dots menu-nav--icon fa-fw"></i><span style="color: white; font-weight:bold;">BUSCAR CAPACITACION</span></a></li>
-            </ul>
-    </nav>
-
+        </ul>
+      </nav>
     </div>
     <div class="main bg-light">
       <div class="barra">
           <img src="../image/fiscalia.png" alt="" width="150" height="150">
           <img src="../image/capupsipped.png" alt="" width="1080" height="170">
       </div>
-        <br><br><br><br><br><br><br>
-        <div class="row">
-          <!-- <h1 style="text-align:center">
-            <?php echo mb_strtoupper (html_entity_decode($row['nombre'], ENT_QUOTES | ENT_HTML401, "UTF-8")); ?> </span>
-            <?php echo mb_strtoupper (html_entity_decode($row['apellido_p'], ENT_QUOTES | ENT_HTML401, "UTF-8")); ?> </span>
-            <?php echo mb_strtoupper (html_entity_decode($row['apellido_m'], ENT_QUOTES | ENT_HTML401, "UTF-8")); ?> </span>
-          </h1> -->
-          <h5 style="text-align:center">
+      <div class="row">
+        <div class="wrap">
+          <article id="tab1">
+            <div class="text-center mb-4">
+              <h1 class="display-4">REGISTRAR CAPACITACION</h1>
+              <h6 class="lead">*CAMPOS OBLIGATORIOS*</h6>
+            </div>
+                  <div class="container">
+                    <form class="container well form-horizontal" id="myform" method="POST" action="../administrador/guardar_capacitacion.php" enctype= "multipart/form-data">
+                      <div class="row">
+                        <div class="alert div-title">
+                          <h3 style="text-align:center">INFORMACIÓN DE LA CAPACITACIÓN </h3>
+                        </div>
 
+                        <div class="col-md-6 mb-3 validar">
+                          <label for="MODALIDAD_CAP">MODALIDAD<span class="required"></span></label>
+                          <select class="form-select form-select-lg" name="MODALIDAD_CAP" id="MODALIDAD_CAP" required>
+                            <option disabled selected value>SELECCIONE UNA OPCION</option>
+                            <?php
+                            $modalidad = "SELECT * FROM modalidad";
+                            $answerasis = $mysqli->query($modalidad);
+                            while($modalidads = $answerasis->fetch_assoc()){
+                             echo "<option value='".$modalidads['modalidad']."'>".$modalidads['modalidad']."</option>";
+                            }
+                            ?>
+                          </select>
+                        </div>
 
-						<div class="wrap">
+                        <div class="col-md-6 mb-3 validar">
+                          <label for="TIPO_CAP">TIPO DE CAPACITACION<span class="required"></span></label>
+                          <select class="form-select form-select-lg" name="TIPO_CAP" id="TIPO_CAP" required>
+                            <option disabled selected value>SELECCIONE UNA OPCION</option>
+                            <?php
+                            $tipocapacitacion = "SELECT * FROM tipocapacitacion";
+                            $answerasis = $mysqli->query($tipocapacitacion);
+                            while($tipocapacitacions = $answerasis->fetch_assoc()){
+                             echo "<option value='".$tipocapacitacions['tipo']."'>".$tipocapacitacions['tipo']."</option>";
+                            }
+                            ?>
+                          </select>
+                        </div>
 
-						  <div class="secciones">
+                        <div class="col-md-6 mb-3 validar" id="OTROS_CAP" style="display:none;">
+                          <label for="OTROS_CAP">ESPECIFIQUE</label>
+                          <input autocomplete="off" class="form-control" id="OTROS_CAP" name="OTROS_CAP" placeholder="" value="" type="text">
+                        </div>
 
-						  <article id="tab1">
+                        <div class="col-md-6 mb-3 validar">
+                          <label for="NOMBRE_CAP" class="is-required">NOMBRE DE LA CAPACITACIÓN<span class="required"></span></label>
+                          <input autocomplete="off"  class="verific form-control" id="NOMBRE_CAP" name="NOMBRE_CAP" value="" type="text" required>
+                        </div>
 
-						  <div class="secciones form-horizontal sticky breadcrumb flat">
+                        <div class="col-md-6 mb-3 validar">
+                          <label for="TEMA_CAP" class="is-required">TEMA<span class="required"></span></label>
+                          <input autocomplete="off" onkeyup="validarfrm()" class="verific form-control" id="TEMA_CAP" name="TEMA_CAP" value="" type="text" required>
+                        </div>
 
-                <H1 style="text-align:center">
-                  REGISTRO DE LA CAPACITACIÓN
-                </H1>
+                        <div class="col-md-6 mb-3 validar">
+                          <label for="FECHAINICIO_CAP" class="is-required">FECHA DE INICIO<span class="required"></span></label>
+                          <input onkeyup="validarfrm()" class="verific form-control" id="FECHAINICIO_CAP" name="FECHAINICIO_CAP" value="" type="date" value="" required>
+                        </div>
 
-						  <p><span><label ></label> * CAMPOS OBLIGATORIOS</span></p>
-						    <div class="container">
-						      <form class="container well form-horizontal" id="myform" method="POST" action="../administrador/guardar_capacitacion.php" enctype= "multipart/form-data">
-						        <div class="row">
+                        <div class="col-md-6 mb-3 validar">
+                          <label for="FECHATERMINO_CAP" class="is-required">FECHA DE TERMINO<span class="required"></span></label>
+                          <input onkeyup="validarfrm()" class="verific form-control" id="FECHATERMINO_CAP" name="FECHATERMINO_CAP" value="" type="date" value="" required>
+                        </div>
 
+                        <div class="col-md-6 mb-3 validar">
+                          <label for="NOMBRE_PONENTE" >NOMBRE DEL PONENTE<span class="required" ></span></label>
+                          <input autocomplete="off" onkeyup="validarfrm()" class="verific form-control" id="NOMBRE_PONENTE" name="NOMBRE_PONENTE" value="" type="text" required>
+                        </div>
 
-						          <div class="alert div-title">
-						            <h3 style="text-align:center">INFORMACIÓN DE LA CAPACITACIÓN </h3>
-						          </div>
+                        <div class="col-md-6 mb-3 validar">
+                          <label for="INSTITUCION" >INSTITUCIÓN QUE IMPARTE<span class="required" ></span></label>
+                          <input autocomplete="off" onkeyup="validarfrm()" class="verific form-control" id="INSTITUCION" name="INSTITUCION" value="" type="text" required>
+                        </div>
 
-						          <!-- <div class="col-md-6 mb-3 validar">
-						            <label for="ID_SOLICITUD" class="is-required">ID DE LA CAPACITACIÓN<span ></span></label>
-						            <input autocomplete="off" onkeyup="validarfrm()" class="verific form-control" id="ID_SOLICITUD" name="ID_SOLICITUD" placeholder="" required type="text" value="">
-						          </div> -->
+                        <div class="col-md-6 mb-3 validar">
+                          <label for="DUR_HORAS" class="is-required">DURACION TOTAL DE HORAS<span class="required"></span></label>
+                          <input autocomplete="off" onkeyup="validarfrm()" class="verific form-control" id="DUR_HORAS" name="DUR_HORAS" value="" type="text" required>
+                        </div>
 
-                      <div class="col-md-6 mb-3 validar">
-                      <label for="MODALIDAD_CAP">MODALIDAD<span class="required"></span></label>
-                      <select class="form-select form-select-lg" name="MODALIDAD_CAP" id="MODALIDAD_CAP" >
-                        <option disabled selected value>SELECCIONE UNA OPCION</option>
-                        <?php
-                        $modalidad = "SELECT * FROM modalidad";
-                        $answerasis = $mysqli->query($modalidad);
-                        while($modalidads = $answerasis->fetch_assoc()){
-                         echo "<option value='".$modalidads['modalidad']."'>".$modalidads['modalidad']."</option>";
-                        }
-                        ?>
-                      </select>
-                    </div>
+                        <div class="col-md-6 mb-3 validar">
+                          <label for="RESUL_CAP">RESULTADO DE  LA CAPACITACION<span class="required"></span></label>
+                          <select class="form-select form-select-lg" name="RESUL_CAP" id="RESUL_CAP" required>
+                            <option disabled selected value>SELECCIONE UNA OPCION</option>
+                            <?php
+                            $resultado = "SELECT * FROM resultado";
+                            $answerasis = $mysqli->query($resultado);
+                            while($resultados = $answerasis->fetch_assoc()){
+                             echo "<option value='".$resultados['resultado']."'>".$resultados['resultado']."</option>";
+                            }
+                            ?>
+                          </select>
+                        </div>
 
+                        <div class="col-md-6 mb-3 validar">
+                          <label for="CONSTANCIA_CAP">CONSTANCIA DE  LA CAPACITACION<span class="required"></span></label>
+                          <select class="form-select form-select-lg" name="CONSTANCIA_CAP" id="CONSTANCIA_CAP" required>
+                            <option disabled selected value>SELECCIONE UNA OPCION</option>
+                            <?php
+                            $acreditacion = "SELECT * FROM acreditacion";
+                            $answerasis = $mysqli->query($acreditacion);
+                            while($acreditacions = $answerasis->fetch_assoc()){
+                             echo "<option value='".$acreditacions['tipo']."'>".$acreditacions['tipo']."</option>";
+                            }
+                            ?>
+                          </select>
+                        </div>
 
-                    <div class="col-md-6 mb-3 validar">
-                    <label for="TIPO_CAP">TIPO DE CAPACITACION<span class="required"></span></label>
-                    <select class="form-select form-select-lg" name="TIPO_CAP" id="TIPO_CAP" >
-                      <option disabled selected value>SELECCIONE UNA OPCION</option>
-                      <?php
-                      $tipocapacitacion = "SELECT * FROM tipocapacitacion";
-                      $answerasis = $mysqli->query($tipocapacitacion);
-                      while($tipocapacitacions = $answerasis->fetch_assoc()){
-                       echo "<option value='".$tipocapacitacions['tipo']."'>".$tipocapacitacions['tipo']."</option>";
-                      }
-                      ?>
-                    </select>
-                  </div>
+                        <div class="col-md-6 mb-3 validar">
+                          <label for="SEDE_CAP" class="is-required">SEDE<span class="required"></span></label>
+                          <input autocomplete="off" onkeyup="validarfrm()" class="verific form-control" id="SEDE_CAP" name="SEDE_CAP" value="" type="text" required>
+                        </div>
 
-                   <div class="col-md-6 mb-3 validar" id="OTROS_CAP" style="display:none;">
-                    <label for="OTROS_CAP">ESPECIFIQUE</label>
-                    <input autocomplete="off" class="form-control" id="OTROS_CAP" name="OTROS_CAP" placeholder="" value="" type="text">
+                        <div class="col-12">
+                          <button style="display: block; margin: 0 auto;"  class="btn color-btn-success" id="enter" type="submit">GUARDAR</button>
+                        </div>
+                      </div>
+                    </form>
                   </div>
                 </div>
-
-						          <div class="col-md-6 mb-3 validar"><br />
-						            <label for="NOMBRE_CAP" class="is-required">NOMBRE DE LA CAPACITACIÓN<span class="required"></span></label>
-						            <input autocomplete="off"  class="verific form-control" id="NOMBRE_CAP" name="NOMBRE_CAP" value="" type="text" required>
-						          </div>
-
-                      <div class="col-md-6 mb-3 validar"><br />
-                        <label for="TEMA_CAP" class="is-required">TEMA<span class="required"></span></label>
-                        <input autocomplete="off" onkeyup="validarfrm()" class="verific form-control" id="TEMA_CAP" name="TEMA_CAP" value="" type="text" required>
-                      </div>
-
-
-                      <div class="col-md-6 mb-3 validar"><br />
-                        <label for="FECHAINICIO_CAP" class="is-required">FECHA DE INICIO<span class="required"></span></label>
-                        <input onkeyup="validarfrm()" class="verific form-control" id="FECHAINICIO_CAP" name="FECHAINICIO_CAP" value="" type="date" value="" required>
-                      </div>
-
-
-                      <div class="col-md-6 mb-3 validar"><br />
-                        <label for="FECHATERMINO_CAP" class="is-required">FECHA DE TERMINO<span class="required"></span></label>
-                        <input onkeyup="validarfrm()" class="verific form-control" id="FECHATERMINO_CAP" name="FECHATERMINO_CAP" value="" type="date" value="" required>
-                      </div>
-
-
-                      <div class="col-md-6 mb-3 validar"><br />
-						            <label for="NOMBRE_PONENTE" >NOMBRE DEL PONENTE<span class="required" ></span></label>
-						            <input autocomplete="off" onkeyup="validarfrm()" class="verific form-control" id="NOMBRE_PONENTE" name="NOMBRE_PONENTE" value="" type="text">
-						          </div>
-
-
-                      <div class="col-md-6 mb-3 validar"><br />
-                        <label for="INSTITUCION" >INSTITUCIÓN QUE IMPARTE<span class="required" ></span></label>
-                        <input autocomplete="off" onkeyup="validarfrm()" class="verific form-control" id="INSTITUCION" name="INSTITUCION" value="" type="text">
-                      </div>
-
-
-                      <div class="col-md-6 mb-3 validar"><br />
-                        <label for="DUR_HORAS" class="is-required">DURACION TOTAL DE HORAS<span class="required"></span></label>
-                        <input autocomplete="off" onkeyup="validarfrm()" class="verific form-control" id="DUR_HORAS" name="DUR_HORAS" value="" type="text" required>
-                      </div>
-
-
-
-                    <div class="col-md-6 mb-3 validar"><br />
-                    <label for="RESUL_CAP">RESULTADO DE  LA CAPACITACION<span class="required"></span></label>
-                    <select class="form-select form-select-lg" name="RESUL_CAP" id="RESUL_CAP" >
-                      <option disabled selected value>SELECCIONE UNA OPCION</option>
-                      <?php
-                      $resultado = "SELECT * FROM resultado";
-                      $answerasis = $mysqli->query($resultado);
-                      while($resultados = $answerasis->fetch_assoc()){
-                       echo "<option value='".$resulados['resultado']."'>".$resultados['resultado']."</option>";
-                      }
-                      ?>
-                    </select>
-                  </div>
-
-                  <div class="col-md-6 mb-3 validar"><br />
-                  <label for="CONSTANCIA_CAP">CONSTANCIA DE  LA CAPACITACION<span class="required"></span></label>
-                  <select class="form-select form-select-lg" name="CONSTANCIA_CAP" id="CONSTANCIA_CAP" >
-                    <option disabled selected value>SELECCIONE UNA OPCION</option>
-                    <?php
-                    $acreditacion = "SELECT * FROM acreditacion";
-                    $answerasis = $mysqli->query($acreditacion);
-                    while($acreditacions = $answerasis->fetch_assoc()){
-                     echo "<option value='".$acreditacions['tipo']."'>".$acreditacions['tipo']."</option>";
-                    }
-                    ?>
-                  </select>
-                </div>
-
-                  <div class="col-md-6 mb-3 validar"><br />
-                    <label for="SEDE_CAP" class="is-required">SEDE<span class="required"></span></label>
-                    <input autocomplete="off" onkeyup="validarfrm()" class="verific form-control" id="SEDE_CAP" name="SEDE_CAP" value="" type="text">
-                  </div>
-
-
-
-
-
-  </div>
-
-</div>
-</div>
-
-  <div class="row">
-    <div>
-      <br>
-      <br>
-      <button style="display: block; margin: 0 auto;"  class="btn color-btn-success" id="enter" type="submit">GUARDAR</button>
+              </article>
+            </div>
+          </div>
+        </h5>
+      </div>
     </div>
   </div>
-
-
-
-
-
 
   <a href="../logout.php" class="btn-flotante-dos">Cerrar Sesión</a>
   <a href="admin.php" class="btn-flotante">Regresar</a>
@@ -421,3 +380,4 @@ a:focus {
     }
   </script>
 </body>
+</html>
