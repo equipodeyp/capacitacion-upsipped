@@ -590,6 +590,15 @@ $row = $result->fetch_assoc();
                                       </div>
 
                             <div>
+                                <div id="showbotonpdf">
+                                <form class="" action="generar_pdf.php" method="POST">
+                                <input type="text" name="diainicio" value="<?php echo $fechainicial; ?>" style="display:none;">
+                                <input type="text" name="diafin" value="<?php echo $fechafin; ?>" style="display:none;">
+                                <button class="btn-flotante-imprimir-asistencia" type="submit" onclick="verdato()"><img src='../image/pdf.jpeg' width='60' height='60'></button>
+                                <!-- <a class="btn-flotante-imprimir-asistencia" style="text-align:center;"><img src='../../image/asistencias_medicas/print.png' width='60' height='60'></a> -->
+                                </form>
+                            </div>
+
                             <a href="admin.php" class="btn-flotante">Regresar</a>
                             <a href="../logout.php" class="btn-flotante-dos">Cerrar Sesión</a>
                             <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
