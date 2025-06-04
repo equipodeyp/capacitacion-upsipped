@@ -279,37 +279,76 @@ $aniofinal = date('Y', strtotime($fechafin));
       </tr>
       </thead>
         <tbody bgcolor="white" style="color: black;">';
-          $aux1 = 0;
-          $institucionneit = "SELECT DISTINCT(datos_capacitaciones.institucion) FROM datos_capacitaciones";
-          $rinstitucionneit = $mysqli->query($institucionneit);
-          while ($finstitucionneit = $rinstitucionneit->fetch_assoc()) {
-            $nombreinstitucion = $finstitucionneit['institucion'];
+        // Get all unique institutions from datos_capacitaciones
+        $var1 = "SELECT DISTINCT institucion FROM datos_capacitaciones
+        WHERE fecha_inicio BETWEEN '$fechainicial' AND '$fechafin'";
+        $rvar1 = $mysqli->query($var1);
 
-          $data .= '<tr>
-              <td style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>'.$finstitucionneit['institucion'].'</b></td>';
+        while ($fvar1 = $rvar1->fetch_assoc()) {
+          $institucion = $fvar1['institucion'];
 
-              $inst = "SELECT * FROM datos_capacitaciones WHERE institucion = '$nombreinstitucion'";
-              $rinst = $mysqli ->query($inst);
-              while ($finst = $rinst ->fetch_assoc()) {
-                $aux1 = $aux1 +1;
-                // code...
-                $data .='<td style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>'.$aux1.'</b></td>
-                <td style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>'.$finst['nombre_capacitacion'].'</b></td>
-                <td style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>0</b></td>
-                <td style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>0</b></td>
-                </tr>';
+          // Get courses for this institution
+          $var2 = "SELECT dc.*,
+                 COUNT(cps.id_servidor) as total_servidores
+          FROM datos_capacitaciones dc
+          LEFT JOIN curso_por_servidor cps ON dc.id = cps.id_curso
+          WHERE dc.institucion = '$institucion'
+          AND dc.fecha_inicio BETWEEN '$fechainicial' AND '$fechafin'
+          GROUP BY dc.id";
+          $rvar2 = $mysqli->query($var2);
+          $num_cursos = $rvar2->num_rows;
+
+          if($num_cursos > 0) {
+            $first = true;
+            while($fvar2 = $rvar2->fetch_assoc()) {
+              if($first) {
+                // echo "<tr>";
+                // echo "<td rowspan='$num_cursos'>" . $institucion . "</td>";
+                $data .= '<tr>
+                    <td rowspan='.$num_cursos.' style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>'.$institucion.'</b></td>';
+                $first = false;
+              } else {
+                $data .= '<tr>';
               }
-
-
-            // code...
+              $data .='<td style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>'.$fvar2['id'].'</b></td>
+                    <td style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>'.$fvar2['nombre_capacitacion'].'</b></td>
+                    <td style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>'.$fvar2['modalidad'].'</b></td>
+                    <td style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>'.$fvar2['total_servidores'].'</b></td>
+                    </tr>';
+            }
           }
+        }
+          // $aux1 = 0;
+          // $institucionneit = "SELECT DISTINCT(datos_capacitaciones.institucion) FROM datos_capacitaciones";
+          // $rinstitucionneit = $mysqli->query($institucionneit);
+          // while ($finstitucionneit = $rinstitucionneit->fetch_assoc()) {
+          //   $nombreinstitucion = $finstitucionneit['institucion'];
+          //
+          // $data .= '<tr>
+          //     <td style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>'.$finstitucionneit['institucion'].'</b></td>';
+          //
+          //     $inst = "SELECT * FROM datos_capacitaciones WHERE institucion = '$nombreinstitucion'";
+          //     $rinst = $mysqli ->query($inst);
+          //     while ($finst = $rinst ->fetch_assoc()) {
+          //       $aux1 = $aux1 +1;
+          //       // code...
+          //       $data .='<td style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>'.$aux1.'</b></td>
+          //       <td style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>'.$finst['nombre_capacitacion'].'</b></td>
+          //       <td style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>0</b></td>
+          //       <td style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>0</b></td>
+          //       </tr>';
+          //     }
+          //
+          //
+          //   // code...
+          // }
 
 
         $data .= '</tbody>
   </table>';
 $data .= '</div></div>';
 
-$data .= '<td style="vertical-align: top; width: 100%; padding: 0;">
+$data .= '
   <table width="100%" bgcolor="#97897D" style="color:white; border-collapse: collapse; font-family: gothambook; margin-top: 20px;">
       <thead>
           <tr>
@@ -389,7 +428,7 @@ $data .= '<td style="vertical-align: top; width: 100%; padding: 0;">
           </tr>
       </tbody>
   </table>
-  </td>';
+  ';
 
 
 
