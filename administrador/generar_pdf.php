@@ -43,10 +43,10 @@ $mpdf = new \Mpdf\Mpdf([
     </table>
     <table width="100%">
     <tr>
-    <td width="100%" align="left" bgcolor="#63696D" style="height:38vh;"><h3 class=""></font></span>
-    <span style="font-size: .55em; align:left;width:6px; color:white;"><font style="font-family: gothambook">
+    <td width="100%" align="right" bgcolor="#63696D" style="height:38vh;"><h3 class=""></font></span>
+    <span style="font-size: .55em; align:center;width:6px; color:white;"><font style="font-family: gothambook">
     Unidad de Protección de Sujetos Que Intervienen en el Procedimiento Penal o de Extinción de Dominio<br>
-    Subdirección de Ejecución de Medidas
+    Subdirección de Enlace interinstitucional
     </font></span></h3>
     </td>
     </tr>
@@ -318,31 +318,6 @@ $aniofinal = date('Y', strtotime($fechafin));
             }
           }
         }
-          // $aux1 = 0;
-          // $institucionneit = "SELECT DISTINCT(datos_capacitaciones.institucion) FROM datos_capacitaciones";
-          // $rinstitucionneit = $mysqli->query($institucionneit);
-          // while ($finstitucionneit = $rinstitucionneit->fetch_assoc()) {
-          //   $nombreinstitucion = $finstitucionneit['institucion'];
-          //
-          // $data .= '<tr>
-          //     <td style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>'.$finstitucionneit['institucion'].'</b></td>';
-          //
-          //     $inst = "SELECT * FROM datos_capacitaciones WHERE institucion = '$nombreinstitucion'";
-          //     $rinst = $mysqli ->query($inst);
-          //     while ($finst = $rinst ->fetch_assoc()) {
-          //       $aux1 = $aux1 +1;
-          //       // code...
-          //       $data .='<td style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>'.$aux1.'</b></td>
-          //       <td style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>'.$finst['nombre_capacitacion'].'</b></td>
-          //       <td style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>0</b></td>
-          //       <td style="border: 1px solid #A19E9F; padding: 6px; text-align: center; font-weight: bold; font-size: 13px;"><b>0</b></td>
-          //       </tr>';
-          //     }
-          //
-          //
-          //   // code...
-          // }
-
 
         $data .= '</tbody>
   </table>';
