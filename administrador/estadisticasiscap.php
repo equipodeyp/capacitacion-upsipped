@@ -411,7 +411,9 @@ $row = $result->fetch_assoc();
                                                   </thead>
                                                   <tbody>
                                                     <?php
-                                                    $var123 = "SELECT COUNT(*) as total FROM datosservidor
+
+
+                                                    $var123 = "SELECT COUNT(DISTINCT datosservidor.id) as total FROM datosservidor
                                                     INNER JOIN curso_por_servidor ON datosservidor.id = curso_por_servidor.id_servidor
                                                     INNER JOIN datos_capacitaciones ON curso_por_servidor.id_curso = datos_capacitaciones.id
                                                     WHERE datos_capacitaciones.fecha_inicio BETWEEN '$fechainicial' AND '$fechafin'";
@@ -427,7 +429,7 @@ $row = $result->fetch_assoc();
                                                     while ($fvar1 = $rvar1->fetch_assoc()) {
                                                       $nameadscrpcion = $fvar1['adscripcion'];
 
-                                                      $var5 = "SELECT COUNT(*) as total FROM datosservidor
+                                                      $var5 = "SELECT COUNT(DISTINCT datosservidor.id) as total FROM datosservidor
                                                       INNER JOIN curso_por_servidor ON datosservidor.id = curso_por_servidor.id_servidor
                                                       INNER JOIN datos_capacitaciones ON curso_por_servidor.id_curso = datos_capacitaciones.id
                                                       WHERE datos_capacitaciones.fecha_inicio BETWEEN '$fechainicial' AND '$fechafin' AND datosservidor.adscripcion = '$nameadscrpcion'";
@@ -470,7 +472,7 @@ $row = $result->fetch_assoc();
                                                   <th style="text-align:center" rowspan="2">Institución</th>
                                                   <th style="text-align:center" colspan="2">Curso</th>
                                                   <th style="text-align:center" rowspan="2">Modalidad</th>
-                                                  <th style="text-align:center" rowspan="2">Total de servidores públicos asistentes*</th>
+                                                  <th style="text-align:center" rowspan="2">Total de servidores públicos asistentes</th>
                                                 </tr>
                                                 <tr>
                                                   <th style="text-align:center">Número</th>
@@ -480,6 +482,7 @@ $row = $result->fetch_assoc();
                                               <tbody>
                                               <?php
                                               // Get all unique institutions from datos_capacitaciones
+                                              // $var1 = "SELECT DISTINCT institucion FROM datos_capacitaciones
                                               $var1 = "SELECT DISTINCT institucion FROM datos_capacitaciones
                                               WHERE fecha_inicio BETWEEN '$fechainicial' AND '$fechafin'";
                                               $rvar1 = $mysqli->query($var1);
@@ -563,7 +566,7 @@ $row = $result->fetch_assoc();
                                                   $num_capacitaciones = $result_cap->fetch_assoc()['total_cap'];
 
                                                   // Count trained servers for this month
-                                                  $query_servidores = "SELECT COUNT(DISTINCT cps.id_servidor) as total_serv
+                                                  $query_servidores = "SELECT COUNT(*) as total_serv
                                                                      FROM curso_por_servidor cps
                                                                      INNER JOIN datos_capacitaciones dc ON cps.id_curso = dc.id
                                                                      WHERE MONTH(dc.fecha_inicio) = $mes_num

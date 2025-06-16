@@ -308,7 +308,7 @@ $aniofinal = date('Y', strtotime($fechafin));
 
       <tbody bgcolor="white" style="color: black;">';
 
-      $var123 = "SELECT COUNT(*) as total FROM datosservidor
+      $var123 = "SELECT COUNT(DISTINCT datosservidor.id) as total FROM datosservidor
       INNER JOIN curso_por_servidor ON datosservidor.id = curso_por_servidor.id_servidor
       INNER JOIN datos_capacitaciones ON curso_por_servidor.id_curso = datos_capacitaciones.id
       WHERE datos_capacitaciones.fecha_inicio BETWEEN '$fechainicial' AND '$fechafin'";
@@ -324,7 +324,7 @@ $aniofinal = date('Y', strtotime($fechafin));
       while ($fvar1 = $rvar1->fetch_assoc()) {
         $nameadscrpcion = $fvar1['adscripcion'];
 
-        $var5 = "SELECT COUNT(*) as total FROM datosservidor
+        $var5 = "SELECT COUNT(DISTINCT datosservidor.id) as total FROM datosservidor
         INNER JOIN curso_por_servidor ON datosservidor.id = curso_por_servidor.id_servidor
         INNER JOIN datos_capacitaciones ON curso_por_servidor.id_curso = datos_capacitaciones.id
         WHERE datos_capacitaciones.fecha_inicio BETWEEN '$fechainicial' AND '$fechafin' AND datosservidor.adscripcion = '$nameadscrpcion'";
@@ -465,7 +465,7 @@ $data .= '
           $num_capacitaciones = $result_cap->fetch_assoc()['total_cap'];
 
           // Count trained servers for this month
-          $query_servidores = "SELECT COUNT(DISTINCT cps.id_servidor) as total_serv
+          $query_servidores = "SELECT COUNT(*) as total_serv
                              FROM curso_por_servidor cps
                              INNER JOIN datos_capacitaciones dc ON cps.id_curso = dc.id
                              WHERE MONTH(dc.fecha_inicio) = $mes_num
